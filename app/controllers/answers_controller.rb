@@ -1,5 +1,4 @@
 class AnswersController < ApplicationController
-  # byebug
   before_action :set_question
 
   def index
@@ -7,7 +6,11 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = @question.answers.create(answer_params)
+    byebug
+    @answer = @question.answers.new(answer_params)
+    @answer.user_id = current_user.id
+    @answer.save
+    byebug
   end
 
   def show
@@ -19,7 +22,7 @@ class AnswersController < ApplicationController
   private
 
   def answer_params
-    # params.require(:answer).permit(:question_id, :user_id, :body)
+    params.require(:answer).permit(:question_id, :user_id, :body)
   end
 
   def set_question

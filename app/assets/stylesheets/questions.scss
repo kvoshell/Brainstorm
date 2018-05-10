@@ -3,24 +3,26 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .odd {
-  background-color: rgba(233, 252, 226, 0.57);
+  background-color: rgb(209, 216, 224);
 }
 
 .even {
-  background-color: rgb(230, 229, 246);
+  background-color: rgb(204, 222, 213);
 }
 
 
 .question {
-  height: 14vh;
+  height: 15vh;
+  min-height: 80px;
   padding: .25rem;
 
   .question-title {
     width: 100%;
-    height: 25%;
+    height: 30%;
     display: inline-block;
 
-    h4 {
+    h3 {
+      font-family: 'Roboto', serif;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -32,12 +34,13 @@
     height: 70%;
 
     .question-body {
-      height: 100%;
+      height: 60%;
       width: 45vw;
       display: inline-block;
 
       p {
         height: 80%;
+        font-family: 'RobotoCondensed', sans-serif;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -51,7 +54,7 @@
 
     .question-data {
       position: absolute;
-      height: 100%;
+      height: 40%;
       width: 14vw;
       display: inline-block;
       font-size: 12px;
@@ -67,4 +70,14 @@
 
 .question-options {
   display: inline-block;
+  border: 1px black solid;
+  text-decoration: none;
+  color: black;
+  padding: 3px;
+  background-color: rgb(170, 211, 245);
+  border-radius: 3%;
+}
+
+.question-options:hover {
+  background-color: rgb(13, 129, 223);
 }

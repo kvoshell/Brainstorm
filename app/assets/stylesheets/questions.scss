@@ -1,0 +1,70 @@
+// Place all the styles related to the questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.odd {
+  background-color: rgba(233, 252, 226, 0.57);
+}
+
+.even {
+  background-color: rgb(230, 229, 246);
+}
+
+
+.question {
+  height: 14vh;
+  padding: .25rem;
+
+  .question-title {
+    width: 100%;
+    height: 25%;
+    display: inline-block;
+
+    h4 {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .question-content {
+    position: relative;
+    height: 70%;
+
+    .question-body {
+      height: 100%;
+      width: 45vw;
+      display: inline-block;
+
+      p {
+        height: 80%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      p.active{
+        white-space: normal;
+        overflow: scroll;
+      }
+    }
+
+    .question-data {
+      position: absolute;
+      height: 100%;
+      width: 14vw;
+      display: inline-block;
+      font-size: 12px;
+      text-align: center;
+
+      p {
+        padding-top: 4vh;
+      }
+
+    }
+  }
+}
+
+.question-options {
+  display: inline-block;
+}

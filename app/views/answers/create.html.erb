@@ -1,0 +1,11 @@
+<%= form_for [@question, @answer] do |answer| %>
+  <div class='form-group'>
+    <%= answer.label :body %>
+    <%= answer.text_field :body, class: 'form-control', placeholder: "Type your answer here" %>
+  </div>
+  <div class="form-group">
+    <%= answer.submit "Submit", method: :post, class: 'button' %>
+    <%= link_to "Schedule an Appointment", '#', class: 'button' %>
+    <%= link_to "Cancel", '#', class: 'button', data: {confirm: 'Are you sure you want to cancel this answer?'} %>
+  </div>
+<% end %>

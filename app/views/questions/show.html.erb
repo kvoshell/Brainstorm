@@ -1,0 +1,17 @@
+<div class='answer-form-top'>
+  <h2><%= @question.title %></h2>
+  <p><%= @question.body %></p>
+</div>
+
+<div class='answer-form-middle'>
+  <% if @question.answers.empty? %>
+    <h1>No Answers Yet!</h1>
+  <% else %>
+    <% @question.answers.each do |answer| %>
+      <h5><%= answer.user.as_json %></h5>
+
+    <% end %>
+  <% end %>
+</div>
+
+<%= render "shared/answer_form" %>

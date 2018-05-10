@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Brainstorm</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class='sidebar'>
+      <div class='sidebar-banner'>
+        <h2><%= link_to 'Brainstorm', welcome_index_path, class:'sidebar-item' %></h2>
+      </div>
+      <div class='sidebar-links'>
+        <h3><%= link_to 'Ask A Question', designs_index_path, class:'sidebar-item' %></h3>
+        <h3><%= link_to 'Design', designs_index_path, class:'sidebar-item' %></h3>
+        <h3><%= link_to 'Development', developments_index_path, class:'sidebar-item' %></h3>
+        <h3><%= link_to 'Account/Project Management', account_managements_index_path, class:'sidebar-item' %></h3>
+        <h3><%= link_to 'Answered', designs_index_path, class:'sidebar-item' %></h3>
+        <h3><%= link_to 'Starred', designs_index_path, class:'sidebar-item' %></h3>
+        <h3><%= link_to 'Appointments', designs_index_path, class:'sidebar-item' %></h3>
+        <h3><%= link_to 'Guidelines', designs_index_path, class:'sidebar-item' %></h3>
+      </div>
+    </div>
+    <div class='body-info'>
+      <%= yield %>
+    </div>
+<!--
+    <script>
+      var coll = document.getElementsByClassName("question");
+      var i;
+
+      for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              this.lastElementChild.firstElementChild.firstElementChild.classList.toggle("active");
+
+          });
+      }
+      </script> -->
+  </body>
+</html>

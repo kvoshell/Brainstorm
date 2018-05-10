@@ -1,0 +1,20 @@
+<% @questions.each do |question| %>
+
+  <div class='question <%= cycle("odd", "even") %>'>
+    <div class='question-title'>
+      <h4><%= question.title %></h4>
+      <!-- <h4><%= link_to "#{question.title}", question_path(question) %></h4> -->
+    </div>
+    <div class='question-content'>
+      <div class='question-body'>
+        <p><%= question.body %></p>
+        <%= link_to 'More Info', question_path(question), class: 'question-options' %>
+        <%= link_to 'Star Question', question_path(question), class: 'question-options' %>
+      </div>
+      <div class='question-data'>
+        <%= "#{question.created_at.strftime("%-m.%-d.%y %l:%M %P ")}"%>
+      </div>
+    </div>
+  </div>
+
+<% end %>

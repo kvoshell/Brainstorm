@@ -2,7 +2,11 @@ class AnswersController < ApplicationController
   before_action :set_question
 
   def index
-    @answers = @question.answers.all
+    @answers = if params[:search] && params[:search] == 'answered'
+      Answer.where(user_id: current_user)
+    else
+      @question.answers.all
+    end
   end
 
   def create
@@ -26,6 +30,8 @@ class AnswersController < ApplicationController
   end
 
   def set_question
-    @question = Question.find(params[:question_id])
+    unless params[:search]
+      @question = Question.find(params[:question_id])
+    end
   end
 end

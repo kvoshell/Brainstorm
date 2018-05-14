@@ -12,19 +12,22 @@
   <body>
     <div class='sidebar'>
       <div class='sidebar-banner'>
-        <h1><%= link_to 'Brainstorm', welcome_index_path, class:'sidebar-logo' %></h1>
+        <h1><%= link_to 'Brainstorm', root_path, class:'sidebar-logo' %></h1>
       </div>
       <div class='sidebar-links'>
-        <h3 class='sidebar-item'><%= link_to 'Ask A Question', questions_path, method: :post %></h3>
-        <h3 class='sidebar-item'><%= link_to 'Design', designs_index_path %></h3>
-        <h3 class='sidebar-item'><%= link_to 'Development', developments_index_path %></h3>
-        <h3 class='sidebar-item'><%= link_to 'Account Management', account_managements_index_path %></h3>
-        <h3 class='sidebar-item'><%= link_to 'Other', designs_index_path %></h3>
+        <h3 class='sidebar-item'><%= link_to 'Ask A Question', new_question_path %></h3>
         <hr>
-        <h3 class='sidebar-item'><%= link_to 'Answered', designs_index_path %></h3>
-        <h3 class='sidebar-item'><%= link_to 'Starred', designs_index_path %></h3>
+        <h3 class='sidebar-item'><%= link_to 'Development', developments_path %></h3>
+        <h3 class='sidebar-item'><%= link_to 'Design', designs_path %></h3>
+        <h3 class='sidebar-item'><%= link_to 'Account Management', account_managements_path %></h3>
+        <h3 class='sidebar-item'><%= link_to 'Other', others_path %></h3>
         <hr>
-        <h3 class='sidebar-item'><%= link_to 'Guidelines', designs_index_path %></h3>
+        <h3 class='sidebar-item'><%= link_to 'My Questions', questions_path(search: 'asked') %></h3>
+        <h3 class='sidebar-item'><%= link_to 'My Answers', answers_path(search: 'answered') %></h3>
+        <h3 class='sidebar-item'><%= link_to 'Starred', starred_questions_path(search: 'starred') %></h3>
+        <hr>
+        <h3 class='sidebar-item'><%= link_to 'Guidelines', designs_path %></h3>
+        <h3 class='sidebar-item'><%= link_to 'Edit Account', designs_path %></h3>
       </div>
     </div>
     <div class='body-container'>

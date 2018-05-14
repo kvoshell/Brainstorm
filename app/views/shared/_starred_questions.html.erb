@@ -1,0 +1,23 @@
+<div class='questions-view'>
+  <% @questions.each do |question| %>
+    <div class='question <%= cycle("odd", "even") %>'>
+      <div class='question-content'>
+        <div class='question-title'>
+          <h3><%= question.title %></h3>
+        </div>
+        <div class='question-body'>
+          <p><%= question.body %></p>
+        </div>
+        <div class='question-data'>
+          <div>
+            <%= link_to 'More Info', question_path(question.question_id), class: 'link-button' %>
+            <%= link_to 'Unstar Question', starred_question_path(question.question_id), method: :delete, class: 'link-button' %>
+          </div>
+          <div class='question-date'>
+            <%= "#{question.created_at.strftime("%-m.%-d.%y %l:%M %P ")}" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

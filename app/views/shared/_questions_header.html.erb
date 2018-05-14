@@ -1,5 +1,9 @@
 <div class='header-title'>
-  <%= controller_name.gsub('_', ' ').chomp('s') %>
+  <% if controller_name == 'questions' %>
+    <%= 'My Questions' %>
+  <% else %>
+    <%= controller_name.gsub('_', ' ').capitalize.chomp('s') %>
+  <% end %>
 </div>
 <div class='header-links'>
   <%= link_to 'Newest', controller_name_index_path('newest'), class:'header-item link-button' %>

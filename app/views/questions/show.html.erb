@@ -3,6 +3,11 @@
   <p><%= @question.body %></p>
   <hr>
 
+  <% if StarredQuestion.find_by(user_id: current_user.id, question_id: @question.id) %>
+    <%= link_to 'Unstar Question', starred_question_path(@question), method: :delete, class: 'link-button' %>
+  <% else %>
+    <%= link_to 'Star Question', starred_questions_path(starred_question: { user_id: current_user.id, question_id: @question.id, title: @question.title, body: @question.body }), method: :post, class: 'link-button' %>
+  <% end %>
   <%= button_tag "Answer Question", class: 'collapsible' %>
 
   <div class='answer-form-bottom'>

@@ -26,10 +26,10 @@ puts '10 Users seeded'
     user_id: user.id,
     title: Faker::FamilyGuy.quote,
     body: Faker::Hipster.paragraph,
-    department: rand(0..2)
+    department: rand(0..3)
   )
 
-  rand(1..3).times do |b|
+  rand(0..10).times do |b|
     question.answers.create(
       question_id: question.id,
       user_id: question.user_id,

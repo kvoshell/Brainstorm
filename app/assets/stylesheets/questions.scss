@@ -125,3 +125,34 @@
 .link-button:hover {
   background-color: rgb(13, 129, 223);
 }
+
+.guidelines {
+  border-bottom: 1px solid black;
+  margin: 10vh 0;
+  font-family: 'Roboto', sans-serif;
+
+  h2 {
+    text-align: center;
+    font-family: 'RobotoCondensed', serif;
+  }
+
+  p {
+    margin: 2vh 0;
+  }
+}
+
+.new-question-form {
+  font-family: 'Roboto', sans-serif;
+
+  .new-question-title {
+    width: 60vw;
+    font-size: 1rem;
+    margin: 2vh auto;
+  }
+
+  .new-question-body {
+    width: 60vw;
+    font-size: 1rem;
+    margin: 2vh auto;
+  }
+}

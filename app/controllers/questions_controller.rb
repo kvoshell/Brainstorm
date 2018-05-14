@@ -1,6 +1,11 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all
+    # byebug
+    @questions = Question.index_by_search(params)
+  end
+
+  def new
+    @question = Question.new
   end
 
   def create
@@ -20,6 +25,6 @@ class QuestionsController < ApplicationController
   private
 
   def questions_params
-    require(:question).permit(:user_id, :title, :body, :department)
+    params.require(:question).permit(:user_id, :title, :body, :department)
   end
 end

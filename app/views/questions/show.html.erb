@@ -1,27 +1,57 @@
 <div class='answer-form-top'>
   <h2><%= @question.title %></h2>
   <p><%= @question.body %></p>
+  <hr>
+
+  <%= button_tag "Answer Question", class: 'collapsible' %>
+
+  <div class='answer-form-bottom'>
+    <%= form_for [@question, Answer.new], url: question_answers_path(@question), method: :post do |answer| %>
+
+      <div class='form-group'>
+        <%= answer.text_area :body, class: 'form-control answer-body', rows: 5, placeholder: "Type your answer here" %>
+      </div>
+
+      <div class="form-group">
+        <%= answer.submit "Submit", method: :post, class: 'button' %>
+        <%= link_to "Cancel", question_path(@question), class: 'button', data: {confirm: 'Are you sure you want to cancel this answer?'} %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div class='answer-form-middle'>
+
   <% if @question.answers.empty? %>
-    <h1>No Answers Yet!</h1>
+
+    <div class='answer'>
+      <h1>No Answers Yet!</h1>
+    </div>
   <% else %>
     <% @question.answers.each do |answer| %>
-      <h5><%= answer.user.email %></h5>
-      <h5><%= answer.body %></h5>
+      <div class='answer'>
+        <p><%= answer.body %></p>
+        <p class='answer-info'><%= answer.user.full_name %>, <%= answer.user.title %></p>
+        <p class='answer-info'><%= answer.created_at.strftime("%l:%M%P, %-m.%-d.%y") %></p>
+      </div>
+      <hr class='answer-divider'>
     <% end %>
   <% end %>
 </div>
 
-<%= form_for [@question, Answer.new], url: question_answers_path(@question), method: :post do |answer| %>
-  <div class='form-group'>
-    <%= answer.label :body %>
-    <%= answer.text_field :body, class: 'form-control', placeholder: "Type your answer here" %>
-  </div>
-  <div class="form-group">
-    <%= answer.submit "Submit", method: :post, class: 'button' %>
-    <%= link_to "Schedule an Appointment", '#', class: 'button' %>
-    <%= link_to "Cancel", '#', class: 'button', data: {confirm: 'Are you sure you want to cancel this answer?'} %>
-  </div>
-<% end %>
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  }
+</script>

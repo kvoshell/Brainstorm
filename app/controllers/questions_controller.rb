@@ -20,6 +20,6 @@ class QuestionsController < ApplicationController
   private
 
   def questions_params
-    require(:questions).permit(:user_id, :title, :body, :department)
+    require(:question).permit(:user_id, :title, :body, :department)
   end
 end

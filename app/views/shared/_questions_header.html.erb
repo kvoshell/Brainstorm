@@ -1,0 +1,9 @@
+<div class='header-title'>
+  <%= controller_name.gsub('_', ' ').chomp('s') %>
+</div>
+<div class='header-links'>
+  <%= link_to 'Newest', controller_name_index_path('newest'), class:'header-item link-button' %>
+  <%= link_to 'Oldest', controller_name_index_path('oldest'), class:'header-item link-button' %>
+  <%= link_to 'Most Answered', controller_name_index_path('most_answers'), class:'header-item link-button' %>
+  <%= link_to 'Least Answered', controller_name_index_path('least_answers'), class:'header-item link-button' %>
+</div>

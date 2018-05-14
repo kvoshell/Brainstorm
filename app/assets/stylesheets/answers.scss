@@ -1,18 +1,48 @@
-// Place all the styles related to the answers controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
 .answer-form-top {
-  height: 20vh;
-  border-bottom: 2px black solid;
+  font-family: 'Roboto', sans-serif;
+  margin: 2vh auto;
+  max-width: 85%;
+
+  h2 {
+    margin-bottom: 2vh;
+  }
 }
 
-.answer-form-empty-answer {
-  height: 20vh;
-  background-color: grey;
+hr {
+  width: 65%;
+  margin: 0 auto;
 }
 
 .answer-form-middle {
+  height: 80vh;
+  margin-top: 2vh;
+  margin-right: -50px;
+  padding-right: 50px;
+  overflow-y: scroll;
 
+  .answer {
+    background-color: rgb(188, 228, 245);
+    border-radius: 3px;
+    margin: 2vh auto;
+    max-width: 90%;
+
+    .answer-divider {
+      margin: 1vh auto;
+    }
+
+    .answer-info {
+      text-align: right;
+    }
+
+  }
+}
+
+.answer-form-bottom {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.1s ease-out;
+
+  .answer-body {
+    width: 60vw;
+  }
 }

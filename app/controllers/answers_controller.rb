@@ -6,11 +6,11 @@ class AnswersController < ApplicationController
   end
 
   def create
-    byebug
     @answer = @question.answers.new(answer_params)
     @answer.user_id = current_user.id
     @answer.save
-    byebug
+    render "questions/show"
+
   end
 
   def show

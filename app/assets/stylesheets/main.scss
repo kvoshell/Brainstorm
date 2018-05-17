@@ -63,15 +63,11 @@ body {
     } // .sidebar-links
   } // .sidebar
 
-  .data-container {
+  .body-info {
     height: 100vh;
     justify-content: flex-end;
-    width: 82vw;
-
-    .body-info {
-      margin: 0 auto;
-      overflow: hidden;
-      width: 90%;
-    }
+    margin: 0 auto;
+    overflow: hidden;
+    width: 74vw;
   }
 } // body-container

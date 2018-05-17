@@ -14,6 +14,10 @@
     font-family: $large;
   }
 
+  form {
+    width: 70%;
+  }
+
   .gradiant-hr {
     @include hr-one
     }
@@ -27,23 +31,38 @@
   }
 
   .login-field {
+    display: flex;
     font-size: 1.25rem;
+    justify-content: center;
     margin: .5vh auto;
+    width: 100%;
   }
 
   .actions {
     align-items: center;
     display: flex;
     justify-content: center;
+    width: 100%;
 
     .login-button {
+      margin-bottom: 1vh;
       text-align: center;
-      width: 10vw;
+      width: 12vw;
     }
   }
 
   .login-links {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     margin-top: 3vh;
     text-align: center;
+    width: 100%;
+
+    .link-button {
+      width: 12vw;
+      margin-bottom: 1vh;
+    }
   }
 }

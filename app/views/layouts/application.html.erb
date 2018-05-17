@@ -13,9 +13,11 @@
     <div class='body-container'>
       <% if user_signed_in? %>
         <div class='sidebar'>
+          
           <div class='sidebar-banner'>
             <h1><%= link_to 'Brainstorm', root_path, class:'sidebar-logo' %></h1>
           </div>
+
           <div class='sidebar-links'>
             <h3 class='sidebar-item'><%= link_to 'Ask A Question', new_question_path %></h3>
             <hr class='sidebar-hr'>
@@ -28,21 +30,18 @@
             <h3 class='sidebar-item'><%= link_to 'My Answers', answers_path(search: 'answered') %></h3>
             <h3 class='sidebar-item'><%= link_to 'Starred', starred_questions_path %></h3>
             <hr class='sidebar-hr'>
-            <h3 class='sidebar-item'><%= link_to 'Edit Account', designs_path %></h3>
+            <h3 class='sidebar-item'><%= link_to 'Edit Account', edit_user_registration_path %></h3>
             <h3 class='sidebar-item'><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></h3>
           </div>
         </div>
-        <div class='data-container'>
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
 
-          <div class='body-info'>
-            <%= yield %>
-          </div>
-        </div>
-        <% else %>
+        <div class='body-info'>
           <%= yield %>
-        <% end %>
+        </div>
+
+      <% else %>
+        <%= yield %>
+      <% end %>
     </div>
   </body>
 </html>

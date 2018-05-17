@@ -35,6 +35,7 @@
 
           <div class='collapsible-answer'>
             <p class='answer-body'><%= answer.body %></p>
+            <p class='answer-info'><%= answer.user.user_name %>, <%= answer.user.title %></p>
             <p class='answer-info'><%= answer.created_at.strftime("%l:%M%P, %-m.%-d.%y") %></p>
           </div>
         </div>

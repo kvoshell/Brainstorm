@@ -1,0 +1,23 @@
+<div class='login-form'>
+  <h1>Brainstorm</h1>
+
+  <hr class='gradiant-hr'>
+
+  <h2 class='login-title'>Forgot Your Password?</h2>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="field">
+      <%= f.email_field :email, class: "login-field", autofocus: true, autocomplete: "email", placeholder: "Email" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Reset Instructions", class: 'login-button form-submit-button' %>
+    </div>
+  <% end %>
+
+  <div class='login-links'>
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

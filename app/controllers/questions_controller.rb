@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
   def index
-    # byebug
-    @questions = Question.index_by_search(params)
+    order_filter = params[:filter] || 'newest'
+
+    @questions = Question.index_by_search(params).order(OrderHelper.sort_by_filter(order_filter))
   end
 
   def new

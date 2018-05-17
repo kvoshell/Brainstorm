@@ -1,0 +1,40 @@
+.guidelines {
+  border: 1px $border-one solid;
+  border-radius: 3px;
+  margin: 2vh auto;
+  overflow-y: scroll;
+  padding: .25rem;
+
+  h1 {
+    text-align: center;
+    font-family: $large;
+  }
+
+  h3 {
+    margin-bottom: .8vh;
+    font-family: $large;
+  }
+
+  p {
+    font-family: $regular;
+  }
+
+  .gradiant-hr {
+    @include hr-one;
+  }
+
+  .guideline {
+    margin: 0 auto 2vh;
+    width: 90%;
+
+    .guideline-title {
+      height: 45%;
+      width: 100%;
+    }
+
+    .guideline-body p {
+      height: 45%;
+      width: 100%;
+    }
+  }
+}

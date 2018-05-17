@@ -4,39 +4,45 @@
     <title>Brainstorm</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Roboto:400', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Roboto+Slab:400', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class='sidebar'>
-      <div class='sidebar-banner'>
-        <h1><%= link_to 'Brainstorm', root_path, class:'sidebar-logo' %></h1>
-      </div>
-      <div class='sidebar-links'>
-        <h3 class='sidebar-item'><%= link_to 'Ask A Question', new_question_path %></h3>
-        <hr>
-        <h3 class='sidebar-item'><%= link_to 'Development', developments_path %></h3>
-        <h3 class='sidebar-item'><%= link_to 'Design', designs_path %></h3>
-        <h3 class='sidebar-item'><%= link_to 'Account Management', account_managements_path %></h3>
-        <h3 class='sidebar-item'><%= link_to 'Other', others_path %></h3>
-        <hr>
-        <h3 class='sidebar-item'><%= link_to 'My Questions', questions_path(search: 'asked') %></h3>
-        <h3 class='sidebar-item'><%= link_to 'My Answers', answers_path(search: 'answered') %></h3>
-        <h3 class='sidebar-item'><%= link_to 'Starred', starred_questions_path(search: 'starred') %></h3>
-        <hr>
-        <h3 class='sidebar-item'><%= link_to 'Guidelines', designs_path %></h3>
-        <h3 class='sidebar-item'><%= link_to 'Edit Account', designs_path %></h3>
-      </div>
-    </div>
     <div class='body-container'>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if user_signed_in? %>
+        <div class='sidebar'>
+          <div class='sidebar-banner'>
+            <h1><%= link_to 'Brainstorm', root_path, class:'sidebar-logo' %></h1>
+          </div>
+          <div class='sidebar-links'>
+            <h3 class='sidebar-item'><%= link_to 'Ask A Question', new_question_path %></h3>
+            <hr class='sidebar-hr'>
+            <h3 class='sidebar-item'><%= link_to 'Account Management', account_managements_path %></h3>
+            <h3 class='sidebar-item'><%= link_to 'Development', developments_path %></h3>
+            <h3 class='sidebar-item'><%= link_to 'Design', designs_path %></h3>
+            <h3 class='sidebar-item'><%= link_to 'Other', others_path %></h3>
+            <hr class='sidebar-hr'>
+            <h3 class='sidebar-item'><%= link_to 'My Questions', questions_path(search: 'asked') %></h3>
+            <h3 class='sidebar-item'><%= link_to 'My Answers', answers_path(search: 'answered') %></h3>
+            <h3 class='sidebar-item'><%= link_to 'Starred', starred_questions_path %></h3>
+            <hr class='sidebar-hr'>
+            <h3 class='sidebar-item'><%= link_to 'Edit Account', designs_path %></h3>
+            <h3 class='sidebar-item'><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></h3>
+          </div>
+        </div>
+        <div class='data-container'>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
 
-      <div class='body-info'>
-        <%= yield %>
-      </div>
+          <div class='body-info'>
+            <%= yield %>
+          </div>
+        </div>
+        <% else %>
+          <%= yield %>
+        <% end %>
     </div>
   </body>
 </html>

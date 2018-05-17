@@ -12,9 +12,13 @@ class AnswersController < ApplicationController
   def create
     @answer = @question.answers.new(answer_params)
     @answer.user_id = current_user.id
-    @answer.save
-    render "questions/show"
 
+    if @answer.save
+      render "questions/show"
+    else
+      flash[:error] = "We were unable to answer that question!"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def show

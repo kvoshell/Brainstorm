@@ -1,31 +1,43 @@
+<% @questions.each do |question| %>
 
+  <div class='question <%= cycle("odd", "even") %>'>
+    <div class='question-content'>
+      <div class='question-title'>
+        <h3><%= question.title %></h3>
+      </div>
 
-<div class='questions-view'>
-  <% @questions.each do |question| %>
-    <div class='question <%= cycle("odd", "even") %>'>
-      <div class='question-content'>
-        <div class='question-title'>
-          <h3><%= question.title %></h3>
-        </div>
-        <div class='question-body'>
-          <p><%= question.body %></p>
-        </div>
-        <div class='question-data'>
-          <div>
-            <%= link_to 'More Info', question_path(question), class: 'link-button' %>
-
-            <% if StarredQuestion.find_by(user_id: current_user.id, question_id: question.id) %>
-              <%= link_to 'Unstar Question', starred_question_path(question), method: :delete, class: 'link-button' %>
-            <% else %>
-              <%= link_to 'Star Question', starred_questions_path(starred_question: { user_id: current_user.id, question_id: question.id, title: question.title, body: question.body }), method: :post, class: 'link-button' %>
-            <% end %>
-          </div>
-
-          <div class='question-date'>
-            <%= "#{question.answers.count} Answers | Asked At #{question.created_at.strftime("%-m.%-d.%y %l:%M %P ")}" %>
-          </div>
-        </div>
+      <div class='question-body'>
+        <p><%= question.body %></p>
       </div>
     </div>
-  <% end %>
-</div>
+
+    <div class='question-actions'>
+      <div class='question-links'>
+        <%= link_to 'More Info', question_path(question), class: 'form-submit-button' %>
+
+        <% if StarredQuestion.find_by(user_id: current_user.id, question_id: question.id) %>
+          <%= link_to 'Unstar Question', starred_question_path(question), method: :delete, class: 'form-submit-button question-link' %>
+        <% else %>
+          <%= link_to 'Star Question', starred_questions_path(starred_question: {
+                user_id: current_user.id,
+                question_id: question.id,
+                title: question.title,
+                body: question.body,
+                department: question.department
+              }), method: :post, class: 'form-submit-button' %>
+        <% end %>
+      </div>
+
+      <div class='question-data'>
+        <p><%= "asked #{question.created_at.strftime("%-m.%-d.%y @ %l:%M%P")}" %></p>
+        <% if controller_name == 'questions'%>
+          <p><%= "#{question.answers.count} Answers | #{question.department.to_s}" %></p>
+        <% else %>
+          <p><%= "#{question.answers.count} Answers" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <hr class='answer-divider gradiant-hr'>
+<% end %>

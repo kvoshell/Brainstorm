@@ -1,48 +1,74 @@
-<div class='guidelines'>
-  <h2>Here are some guidelines for asking questions</h2>
-  <p>
-    Some content about the best way to use this form will go here. It
-    should be brief and informative, while encouraging curiosity and
-    inclusiveness.  Maybe we need do and don't examples. Some content
-    about the best way to use this form will go here. It should be brief
-    and informative, while encouraging curiosity and inclusiveness. Maybe
-    we need do and don't examples.
-  </p>
-  <ul>
-    <li>This is an idea</li>
-    <li>Here's another one</li>
-    <li>One more should do it</li>
-  </ul>
+<div class='guidelines even'>
+  <h1 class='guideline-title'>Brainstorm Basics</h1>
+
+  <hr class='gradiant-hr'>
+
+  <div class='guideline'>
+    <h3 class='guideline-title'>Welcome!</h3>
+      <p class='guideline-body'>
+        Brainstorm is a collaborative space that encourages curiosity, values feedback,
+        and provides insight into our collective expertise in an organized and engaging way.
+        When submitting a question or answer, there are a few tips that will help to
+        provide a great experience for everyone.
+      </p>
+  </div>
+  <div class='guideline'>
+    <h3 class='guideline-title'>Investigate First, Inquire Second</h3>
+      <p class='guideline-body'>
+        Do you have a question you're dying to ask? That's great, just make sure someone else
+        hasn't already asked it first!  Keeping duplicate questions to a minimum helps to
+        consolidate knowledge into one easy to find place.
+      </p>
+  </div>
+  <div class='guideline'>
+    <h3 class='guideline-title'>Questions Are Anonymous, Answers Are Not</h3>
+      <p class='guideline-body'>
+        There's no such thing as a dumb question! But just in case you're still apprehensive,
+        Brainstorm will keep your curiosity anonymous.  However, you should feel proud about
+        helping others learn, so we will proudly display your user name and title for each answer!
+      </p>
+  </div>
+  <div class='guideline'>
+    <h3 class='guideline-title'>Rules and Other Boring Stuff</h3>
+      <p class='guideline-body'>
+        Organization is key, so please try to keep departmental questions and answers on track! Also,
+        please keep all questions and answers respectful, professional, and helpful!
+      </p>
+  </div>
 </div>
 
-<div class='new-question-form'>
+<div class='question even new-question-form'>
   <%= form_for [Question.new], method: :post do |question| %>
+    <h1 class='guideline-title'>Ask A Question</h1>
+
+    <hr class='gradiant-hr'>
+
     <div class='form-group'>
-      <%= question.text_field :title, class: 'form-control new-question-title', placeholder: "Type your question here" %>
+      <%= question.text_field :title, class: 'form-control new-question', placeholder: "Question Title", required: true %>
     </div>
 
     <div class='form-group'>
-      <%= question.text_area :body, class: 'form-control new-question-body', rows: 6, placeholder: "Type your answer here" %>
+      <%= question.text_area :body, class: 'form-control new-question', rows: 6, placeholder: "Question Body", required: true %>
     </div>
 
-    <div class='form-group'>
-      <%= question.radio_button :department, 'Development' %>
-      <%= question.label :department, "Development" %>
+    <div class='form-group new-question-buttons'>
+      <span>This Question Is For: &nbsp;</span>
+      <%= question.radio_button :department, 'Development', class: 'new-question-button' %>
+      <%= question.label :department, "Development", class: 'new-question-label' %>
 
-      <%= question.radio_button :department, 'Design' %>
-      <%= question.label :department, "Design" %>
+      <%= question.radio_button :department, 'Design', class: 'new-question-button' %>
+      <%= question.label :department, "Design", class: 'new-question-label' %>
 
-      <%= question.radio_button :department, 'Account management' %>
-      <%= question.label :department, "Account Management" %>
+      <%= question.radio_button :department, 'Account management', class: 'new-question-button' %>
+      <%= question.label :department, "Account Management", class: 'new-question-label' %>
 
-      <%= question.radio_button :department, 'Other' %>
-      <%= question.label :department, "Other" %>
-
+      <%= question.radio_button :department, 'Other', class: 'new-question-button', checked: true %>
+      <%= question.label :department, "Other", class: 'new-question-label' %>
     </div>
 
-    <div class="form-group">
-      <%= question.submit "Submit", method: :post, class: 'button' %>
-      <%= link_to "Cancel", '#', class: 'button', data: {confirm: 'Are you sure you want to cancel this answer?'} %>
+    <div class="form-group new-question-submit-buttons">
+      <%= question.submit "Submit", method: :post, class: 'form-submit-button' %>
+      <%= link_to "Cancel", '#', class: 'form-submit-button', data: {confirm: 'Are you sure you want to cancel this answer?'} %>
     </div>
   <% end %>
 </div>

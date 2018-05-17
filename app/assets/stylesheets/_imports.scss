@@ -1,0 +1,67 @@
+
+// COLORS
+
+$light-blue: rgb(213, 232, 236);
+$light-blue-clear: rgba(213, 232, 236, 0.3);
+$dark-blue: rgb(80, 138, 168);
+
+$light-blue-button: rgb(170, 211, 245);
+$dark-blue-button: rgb(13, 129, 223);
+
+$info-light: rgba(174, 218, 171, 0.4);
+$info-dark: rgba(174, 218, 171, 0.95);
+
+$border-one: rgb(138, 141, 142);
+
+// FONTS
+
+$regular: 'RobotoCondensed', sans-serif;
+$large: 'RobotoSlab', serif;
+
+// MIXINS
+
+@mixin hr-one {
+  width: 65%;
+  margin: 1.25vh auto;
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
+
+@mixin collapsible-animation {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.1s ease-out;
+}
+
+// APP WIDE STYLINGS
+
+.form-submit-button {
+  background-color: $light-blue-button;
+  border: 1px black solid;
+  border-radius: 3%;
+  color: black;
+  font-size: .9em;
+  margin-right: 1vw;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.form-submit-button:hover {
+  background-color: $dark-blue-button;
+}
+
+.form-submit-button:focus {
+  outline: 0;
+}
+
+.odd {
+  background-color: $info-light;
+}
+
+.even {
+  background-color: $info-dark;
+}

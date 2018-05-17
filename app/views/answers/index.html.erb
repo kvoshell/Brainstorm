@@ -1,15 +1,69 @@
+<div class='questions-header'>
+  <%= render "shared/questions_header" %>
+</div>
 
-<% if @answers.empty? %>
-  <div class='answer'>
-    <h1>No Answers Yet!</h1>
+<div class='answer-view-question'>
+  <div class='answer-view-answers'>
+    <% if @answers.empty? %>
+      <div class='answer odd'>
+        <h2 class='no-answer'>No Answers Yet!</h2>
+      </div>
+    <% else %>
+      <% @answers.each do |answer| %>
+        <div class='answer-view-content <%= cycle("odd", "even") %>'>
+          <div class='answer-view-title'>
+            <h3><%= answer.question.title %></h3>
+          </div>
+
+          <div class='answer-view-body'>
+            <p><%= answer.question.body %></p>
+          </div>
+
+          <hr class='gradiant-hr'>
+
+          <div class='answer-actions'>
+            <div class='answer-links'>
+              <%= link_to 'More Info', question_path(answer.question), class: 'form-submit-button' %>
+              <%= button_tag "See My Answer", class: 'form-submit-button collapsible' %>
+            </div>
+
+            <div class='answer-data'>
+              <p><%="asked #{answer.question.created_at.strftime("%-m.%-d.%y @ %l:%M%P")}" %></p>
+              <p><%= "#{answer.question.answers.count} Answers | #{answer.question.department.to_s}" %></p>
+            </div>
+          </div>
+
+          <div class='collapsible-answer'>
+            <p class='answer-body'><%= answer.body %></p>
+            <p class='answer-info'><%= answer.created_at.strftime("%l:%M%P, %-m.%-d.%y") %></p>
+          </div>
+        </div>
+        <hr class='gradiant-hr'>
+      <% end %>
+    <% end %>
   </div>
-<% else %>
-  <% @answers.each do |answer| %>
-    <div class='answer'>
-      <p><%= answer.question.title %>
-      <p><%= answer.question.body %>
-      <p><%= answer.body %></p>
-      <p class='answer-info'><%= answer.created_at.strftime("%l:%M%P, %-m.%-d.%y") %></p>
-    </div>
-  <% end %>
-<% end %>
+</div>
+
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+
+      if (this.classList.contains("active")){
+        this.innerHTML = "Undo Answer";
+      } else {
+        this.innerHTML = "Answer Question";
+      }
+
+      var content = this.parentElement.parentElement.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  }
+</script>

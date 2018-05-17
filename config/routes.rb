@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
   resources :questions do
     resources :answers
   end
@@ -13,5 +14,5 @@ Rails.application.routes.draw do
   resources :account_managements
   resources :others
 
-  root 'welcome#index'
+  root 'developments#index'
 end

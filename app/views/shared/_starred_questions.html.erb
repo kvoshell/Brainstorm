@@ -1,23 +1,26 @@
-<div class='questions-view'>
-  <% @questions.each do |question| %>
-    <div class='question <%= cycle("odd", "even") %>'>
-      <div class='question-content'>
-        <div class='question-title'>
-          <h3><%= question.title %></h3>
-        </div>
-        <div class='question-body'>
-          <p><%= question.body %></p>
-        </div>
-        <div class='question-data'>
-          <div>
-            <%= link_to 'More Info', question_path(question.question_id), class: 'link-button' %>
-            <%= link_to 'Unstar Question', starred_question_path(question.question_id), method: :delete, class: 'link-button' %>
-          </div>
-          <div class='question-date'>
-            <%= "#{question.created_at.strftime("%-m.%-d.%y %l:%M %P ")}" %>
-          </div>
-        </div>
+<% @questions.each do |question| %>
+
+  <div class='question <%= cycle("odd", "even") %>'>
+    <div class='question-content'>
+      <div class='question-title'>
+        <h3><%= question.title %></h3>
+      </div>
+
+      <div class='question-body'>
+        <p><%= question.body %></p>
       </div>
     </div>
-  <% end %>
-</div>
+
+    <div class='question-actions'>
+      <div class='question-links'>
+        <%= link_to 'More Info', question_path(question.question_id), class: 'form-submit-button question-link' %>
+        <%= link_to 'Unstar Question', starred_question_path(question.question_id), method: :delete, class: 'form-submit-button question-link' %>
+      </div>
+
+      <div class='question-data'>
+        <p><%= "asked #{question.created_at.strftime("%-m.%-d.%y @ %l:%M%P")}" %></p>
+        <p><%= "#{original_question_answers(question.question_id)} Answers | #{question.department.to_s}" %></p>
+      </div>
+    </div>
+  </div>
+<% end %>

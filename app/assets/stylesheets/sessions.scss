@@ -1,0 +1,49 @@
+.login-form {
+  align-items: center;
+  background-color: $info-dark;
+  border: 1px $border-one solid;
+  display: flex;
+  flex-direction:column;
+  font-family: $regular;
+  height: 80vh;
+  justify-content: center;
+  margin: 5vh auto;
+  width: 30vw;
+
+  h1 {
+    font-family: $large;
+  }
+
+  .gradiant-hr {
+    @include hr-one
+    }
+
+  .login-title {
+    margin-bottom: 2vh;
+  }
+
+  .field {
+    margin: 2vh auto;
+  }
+
+  .login-field {
+    font-size: 1.25rem;
+    margin: .5vh auto;
+  }
+
+  .actions {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    .login-button {
+      text-align: center;
+      width: 10vw;
+    }
+  }
+
+  .login-links {
+    margin-top: 3vh;
+    text-align: center;
+  }
+}

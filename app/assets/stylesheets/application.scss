@@ -9,14 +9,12 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
  */
 
-
-
-// @import "main";
-// @import "developments";
-// @import "questions";
-// @import "answers";
+@import 'imports';
+@import 'main';
+@import 'questions';
+@import 'new_questions';
+@import 'answers';
+@import 'guidelines';
+@import 'sessions';

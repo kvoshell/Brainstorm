@@ -1,114 +1,86 @@
-.questions-header {
+.question {
+  background-color: $content-background;
+  border: 1px $border-one solid;
+  border-radius: 3px;
+  font-family: $regular;
+  margin-bottom: 1.15vh;
+  padding: .9rem;
+}
+
+.question-content {
   display: flex;
-  height: 8vh;
+  flex-direction: column;
+  height: 65%;
+}
 
-  .header-title {
-    align-items: center;
-    display: flex;
+.question-text {
+  height: 33%;
+  margin-bottom: 1vh;
+
+  h3, p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  h3 {
     font-family: $large;
-    height: 100%;
-    justify-content: center;
-    width: 30%;
   }
+}
 
-  .header-links {
+.question-tags {
+  align-items: flex-end;
+  display: flex;
+  height: 33%;
+  margin-bottom: 1vh;
+}
+
+.question-data {
+  display: flex;
+  font-size: .9rem;
+  height: 35%;
+  margin-bottom: 1vh;
+
+  .question-buttons {
     align-items: center;
     display: flex;
-    font-family: $regular;
-    height: 100%;
+    justify-content: flex-start;
+    width: 33%;
+  }
+  .question-edited-at {
+    align-items: center;
+    display: flex;
     justify-content: center;
-    width: 69%;
-
-    .header-item {
-      align-items: center;
-      display: flex;
-      font-size: .85rem;
-      height: 30%;
-      justify-content: center;
-      margin-left: 1vw;
-      white-space: nowrap;
-      width: 20%;
-    }
+    width: 33%;
   }
-} // .questions-header
-
-.questions-view {
-  height: 92vh;
-  margin-right: -50px;
-  margin-top: .25vh;
-  overflow-y: scroll;
-  padding-right: 50px;
-
-  .gradiant-hr {
-    @include hr-one
+  .question-answered-at {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 33%;
   }
+}
 
-  .question {
-    border: 1px $border-one solid;
-    border-radius: 3px;
-    height: 15vh;
-    margin-bottom: 1.25vh;
-    min-height: 80px;
-    padding: .25rem;
+.question-tag {
+  background-color: $light-blue;
+  border: 1px black solid;
+  border-radius: 3px;
+  color: white;
+  font-size: .88em;
+  margin-right: .75vw;
+  margin-top: 1vh;
+  padding: 5px;
+}
 
-    .question-content {
-      height: 55%;
-      margin-left: 1.5vw;
-      width: 90%;
+.question-answered-at {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 33%;
+}
 
-      .question-title {
-        font-family: $large;
-        height: 45%;
-        margin-top: 1vh;
-        width: 100%;
-
-        h3 {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-      }
-
-      .question-body {
-        height: 45%;
-        width: 100%;
-
-        p {
-          font-family: $regular;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-      }
-    } // .question-content
-
-    .question-actions {
-      display: flex;
-      font-family: $regular;
-      height: 30%;
-
-      .question-links {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        width: 60%;
-
-        .question-link {
-          margin-right: 1vw;
-          padding: 5px;
-        }
-      }
-
-      .question-data {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        font-family: $regular;
-        font-size: .9rem;
-        justify-content: center;
-        padding-right: 3vw;
-        width: 70%;
-      }
-    } // .question-actions
-  } // .question
-} // .questions-view
+.data-hr {
+  width: 25%;
+  border: 1px $border-one solid;
+}

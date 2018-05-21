@@ -13,29 +13,37 @@
     <div class='body-container'>
       <% if user_signed_in? %>
         <div class='sidebar'>
-          
-          <div class='sidebar-banner'>
+          <div class='sidebar-title'>
             <h1><%= link_to 'Brainstorm', root_path, class:'sidebar-logo' %></h1>
           </div>
 
           <div class='sidebar-links'>
-            <h3 class='sidebar-item'><%= link_to 'Ask A Question', new_question_path %></h3>
+            <%= link_to 'Ask A Question', new_question_path, class: 'sidebar-item' %>
+
             <hr class='sidebar-hr'>
-            <h3 class='sidebar-item'><%= link_to 'Account Management', account_managements_path %></h3>
-            <h3 class='sidebar-item'><%= link_to 'Development', developments_path %></h3>
-            <h3 class='sidebar-item'><%= link_to 'Design', designs_path %></h3>
-            <h3 class='sidebar-item'><%= link_to 'Other', others_path %></h3>
+
+            <%= link_to 'Account Management', account_managements_path, class: 'sidebar-item' %>
+            <%= link_to 'Development', developments_path, class: 'sidebar-item' %>
+            <%= link_to 'Design', designs_path, class: 'sidebar-item' %>
+            <%= link_to 'Other', others_path, class: 'sidebar-item' %>
+
             <hr class='sidebar-hr'>
-            <h3 class='sidebar-item'><%= link_to 'My Questions', questions_path(search: 'asked') %></h3>
-            <h3 class='sidebar-item'><%= link_to 'My Answers', answers_path(search: 'answered') %></h3>
-            <h3 class='sidebar-item'><%= link_to 'Starred', starred_questions_path %></h3>
+
+            <%= link_to 'My Questions', questions_path(search: 'asked', user_id: current_user.id), class: 'sidebar-item' %>
+            <%= link_to 'My Answers', answers_path(search: 'answered'), class: 'sidebar-item' %>
+            <%= link_to 'Starred', starred_questions_path, class: 'sidebar-item' %>
+
             <hr class='sidebar-hr'>
-            <h3 class='sidebar-item'><%= link_to 'Edit Account', edit_user_registration_path %></h3>
-            <h3 class='sidebar-item'><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></h3>
+
+            <%= link_to 'Edit Account', edit_user_registration_path, class: 'sidebar-item' %>
+            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'sidebar-item' %>
           </div>
         </div>
 
         <div class='body-info'>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+
           <%= yield %>
         </div>
 

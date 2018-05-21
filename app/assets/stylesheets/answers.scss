@@ -1,45 +1,59 @@
-.answer-view-question {
+.answer-form {
+  border-radius: 3px;
   font-family: $regular;
+  margin: 2vh auto;
 
-  .answer-view-content {
+  @include collapsible-animation;
+  width: 100%;
+
+  .answer-form-body {
+    display: flex;
+    font-size: 1rem;
+    justify-content: center;
+    margin: 2vh 0;
+    width: 90%;
+  }
+}
+
+.answer-view-answers {
+  height: 80vh;
+  margin-right: -50px;
+  margin-top: 2vh;
+  overflow-y: scroll;
+  padding-right: 50px;
+  width: 100%;
+
+  .answer {
+    background: $content-background;
     border: 1px $border-one solid;
     border-radius: 3px;
-    // margin-bottom: 1.25vh;
+    display: flex;
+    flex-direction: column;
+    margin: 1.75vh 1.5vw;
+    min-height: 80px;
     padding: .25rem;
     padding-bottom: 1vh;
 
-    .answer-view-title {
-      margin: 1vh auto;
-      margin-left: 1.5vw;
-      text-align: center;
-      width: 90%;
-
-      h3 {
-        font-family: $large;
-        margin-bottom: 3vh;
-      }
-    }
-
-    .answer-view-body p {
-      margin: 0 auto;
-      margin-left: 1.5vw;
-      width: 90%;
-    }
-
-    .gradiant-hr {
-      @include hr-one;
-    }
-
-    .answer-actions {
+    .no-answer {
       display: flex;
-      height: 40%;
-      margin: 0 auto;
+      justify-content: center;
+      margin: auto 0;
+    }
+
+    .answer-body {
+      margin-bottom: 2vh;
+      padding: 1vh 2vw;
+      width: 90%;
+    }
+
+    .answer-data {
+      @extend .question-data;
+      padding: 1vh 2vw;
       width: 90%;
 
       .answer-links {
         margin-top: 1vh;
         width: 60%;
-
       }
 
       .answer-data {
@@ -54,79 +68,22 @@
       }
     } // .answer-actions
 
-    .answer-form {
-      @include collapsible-animation;
-      width: 100%;
-
-      .answer-form-body {
-        font-size: 1rem;
-        margin: 2vh 0;
-        width: 100%;
-      }
-    }
-  } // .answer-view-content
-
-  .answer-view-answers {
-    height: 80vh;
-    margin-right: -50px;
-    margin-top: 2vh;
-    overflow-y: scroll;
-    padding-right: 50px;
-    width: 100%;
-
-    .answer {
-      border: 1px $border-one solid;
-      border-radius: 3px;
-      display: flex;
-      flex-direction: column;
-      margin: 1.75vh 1.5vw;
-      min-height: 80px;
-      padding: .25rem;
-      padding-bottom: 1vh;
-
-      .no-answer {
-        display: flex;
-        justify-content: center;
-        margin: auto 0;
-      }
-
-      .answer-body {
-        margin-bottom: 2vh;
-        padding: 1vh 2vw;
-        width: 90%;
-      }
-
-      .answer-info {
-        font-size: .9rem;
-        padding-right: 6.5vw;
-        text-align: right;
-      }
-    }
-
-    .gradiant-hr {
-      @include hr-one
-    }
-
     .answer-divider {
       margin: 1vh auto;
     }
-  } // .answer-view-answers
+  }
+} // .answer-view-answers
+
+.answer-info {
+  font-size: .9rem;
 }
 
 .collapsible-answer {
   @include collapsible-animation;
-  margin: 1vh auto;
-  width: 90%;
 
   .answer-body {
-    margin-bottom: 2vh;
+    margin: 2vh auto 2vh;
     padding: 1vh 1.5vw;
     width: 90%;
-  }
-
-  .answer-info {
-    font-size: .9rem;
-    padding-right: 6vw;
-    text-align: right;
   }
 }

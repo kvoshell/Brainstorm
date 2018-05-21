@@ -1,15 +1,15 @@
 
 // COLORS
+$body-background: rgb(255, 255, 255);
+$body-background-clear: rgba(213, 232, 236, 0.3);
+$content-background: rgba(230, 235, 230, 0.4);
+$content-green: rgba(174, 218, 171, .6);
 
-$light-blue: rgb(213, 232, 236);
-$light-blue-clear: rgba(213, 232, 236, 0.3);
+$light-green-actions: rgb(152, 226, 181);
+$dark-green-actions: rgb(112, 198, 146);
+$light-blue: rgb(13, 129, 223);
+
 $dark-blue: rgb(80, 138, 168);
-
-$light-blue-button: rgb(170, 211, 245);
-$dark-blue-button: rgb(13, 129, 223);
-
-$info-light: rgba(174, 218, 171, 0.4);
-$info-dark: rgba(174, 218, 171, 0.95);
 
 $border-one: rgb(138, 141, 142);
 
@@ -39,29 +39,42 @@ $large: 'RobotoSlab', serif;
 
 // APP WIDE STYLINGS
 
+.content-view {
+  height: 92vh;
+  margin-right: -50px;
+  margin-top: .25vh;
+  overflow-y: scroll;
+  padding-right: 50px;
+}
+
+.gradiant-hr {
+  @include hr-one
+}
+
 .form-submit-button {
-  background-color: $light-blue-button;
+  background-color: $light-green-actions;
   border: 1px black solid;
   border-radius: 3%;
   color: black;
-  font-size: .9em;
   margin-right: 1vw;
   padding: 5px;
   text-decoration: none;
 }
 
+.form-submit-button.alt{
+  background-color: $light-green-actions;
+  border: 1px black solid;
+  border-radius: 3%;
+  color: black;
+  margin-right: 1vw;
+  padding: 7px;
+  text-decoration: none;
+}
+
 .form-submit-button:hover {
-  background-color: $dark-blue-button;
+  background-color: $dark-green-actions;
 }
 
 .form-submit-button:focus {
   outline: 0;
-}
-
-.odd {
-  background-color: $info-light;
-}
-
-.even {
-  background-color: $info-dark;
 }

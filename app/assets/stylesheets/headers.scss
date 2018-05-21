@@ -1,0 +1,34 @@
+.content-header {
+  display: flex;
+  height: 9vh;
+
+}
+
+.header-title {
+  align-items: center;
+  display: flex;
+  font-family: $large;
+  height: 100%;
+  justify-content: center;
+  width: 30%;
+}
+
+.header-queries {
+  align-items: center;
+  display: flex;
+  font-family: $regular;
+  height: 100%;
+  justify-content: center;
+  width: 69%;
+
+  .header-item {
+    align-items: center;
+    display: flex;
+    font-size: .85rem;
+    height: 30%;
+    justify-content: center;
+    margin-left: 1vw;
+    white-space: nowrap;
+    width: 20%;
+  }
+}

@@ -1,9 +1,9 @@
-.guidelines {
-  border: 1px $border-one solid;
+.new-question-content {
   border-radius: 3px;
-  margin: 2vh auto;
+  font-family: $regular;
+  margin: 1.25vh auto;
   overflow-y: scroll;
-  padding: .25rem;
+  padding: .5rem;
 
   h1 {
     text-align: center;
@@ -15,12 +15,11 @@
     font-family: $large;
   }
 
-  p {
-    font-family: $regular;
-  }
-
-  .gradiant-hr {
-    @include hr-one;
+  .guidelines {
+    background-color: $content-green;
+    border: 1px $border-one solid;
+    border-radius: 3px;
+    padding: .9rem;
   }
 
   .guideline {
@@ -33,6 +32,7 @@
     }
 
     .guideline-body p {
+      font-family: $regular;
       height: 45%;
       width: 100%;
     }

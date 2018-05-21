@@ -1,6 +1,6 @@
 .login-form {
   align-items: center;
-  background-color: $info-dark;
+  background-color: $content-background;
   border: 1px $border-one solid;
   display: flex;
   flex-direction:column;
@@ -44,7 +44,7 @@
     justify-content: center;
     width: 100%;
 
-    .login-button {
+    .link-button {
       margin-bottom: 1vh;
       text-align: center;
       width: 12vw;
@@ -56,13 +56,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-top: 3vh;
     text-align: center;
     width: 100%;
 
     .link-button {
-      width: 12vw;
       margin-bottom: 1vh;
+      width: 11.25vw;
     }
   }
 }

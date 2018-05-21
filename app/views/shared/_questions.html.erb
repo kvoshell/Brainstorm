@@ -1,22 +1,28 @@
 <% @questions.each do |question| %>
 
-  <div class='question <%= cycle("odd", "even") %>'>
+  <div class='question'>
     <div class='question-content'>
-      <div class='question-title'>
+      <div class='question-text'>
         <h3><%= question.title %></h3>
       </div>
 
-      <div class='question-body'>
+      <div class='question-text'>
         <p><%= question.body %></p>
+      </div>
+
+      <div class='question-tags'>
+        <span class='question-tag'>Ruby</span>
+        <span class='question-tag'>JavaScript</span>
+        <span class='question-tag'>Front-End Engineering</span>
       </div>
     </div>
 
-    <div class='question-actions'>
-      <div class='question-links'>
+    <div class='question-data'>
+      <div class='question-buttons'>
         <%= link_to 'More Info', question_path(question), class: 'form-submit-button' %>
 
         <% if StarredQuestion.find_by(user_id: current_user.id, question_id: question.id) %>
-          <%= link_to 'Unstar Question', starred_question_path(question), method: :delete, class: 'form-submit-button question-link' %>
+          <%= link_to 'Unstar Question', starred_question_path(question), method: :delete, class: 'form-submit-button' %>
         <% else %>
           <%= link_to 'Star Question', starred_questions_path(starred_question: {
                 user_id: current_user.id,
@@ -26,18 +32,26 @@
                 department: question.department
               }), method: :post, class: 'form-submit-button' %>
         <% end %>
+
+        <% if question.user_id == current_user.id %>
+          <%= link_to 'Edit Question', edit_question_path(question.id), class: 'form-submit-button'%>
+        <% end %>
       </div>
 
-      <div class='question-data'>
-        <p><%= "asked #{question.created_at.strftime("%-m.%-d.%y @ %l:%M%P")}" %></p>
+      <div class='question-edited-at'>
+        <% if question.updated_at != question.created_at %>
+          <p><%= "edited at #{question.updated_at.strftime("%l:%M %P %-m.%-d.%y")}" %></p>
+        <% end %>
+      </div>
+
+      <div class='question-answered-at'>
+        <p><%= "asked at #{question.created_at.strftime("%l:%M %P, %-m.%-d.%y")}" %></p>
         <% if controller_name == 'questions'%>
-          <p><%= "#{question.answers.count} Answers | #{question.department.to_s}" %></p>
+          <p><%= "#{question.answers.count} Answers in #{question.department.to_s}" %></p>
         <% else %>
           <p><%= "#{question.answers.count} Answers" %></p>
         <% end %>
       </div>
     </div>
   </div>
-
-  <hr class='answer-divider gradiant-hr'>
 <% end %>

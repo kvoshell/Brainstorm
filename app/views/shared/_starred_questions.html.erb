@@ -1,25 +1,37 @@
 <% @questions.each do |question| %>
 
-  <div class='question <%= cycle("odd", "even") %>'>
+  <div class='question'>
     <div class='question-content'>
-      <div class='question-title'>
+      <div class='question-text'>
         <h3><%= question.title %></h3>
       </div>
 
-      <div class='question-body'>
+      <div class='question-text'>
         <p><%= question.body %></p>
+      </div>
+
+      <div class='question-tags'>
+        <span class='question-tag'>Ruby</span>
+        <span class='question-tag'>JavaScript</span>
+        <span class='question-tag'>Front-End Engineering</span>
       </div>
     </div>
 
-    <div class='question-actions'>
-      <div class='question-links'>
-        <%= link_to 'More Info', question_path(question.question_id), class: 'form-submit-button question-link' %>
-        <%= link_to 'Unstar Question', starred_question_path(question.question_id), method: :delete, class: 'form-submit-button question-link' %>
+    <div class='question-data'>
+      <div class='question-buttons'>
+        <%= link_to 'More Info', question_path(question.question_id), class: 'form-submit-button' %>
+        <%= link_to 'Unstar Question', starred_question_path(question.question_id), method: :delete, class: 'form-submit-button' %>
       </div>
 
-      <div class='question-data'>
-        <p><%= "asked #{question.created_at.strftime("%-m.%-d.%y @ %l:%M%P")}" %></p>
-        <p><%= "#{original_question_answers(question.question_id)} Answers | #{question.department.to_s}" %></p>
+      <div class='question-edited-at'>
+        <% if question.updated_at != question.created_at %>
+          <p><%= "edited at #{question.updated_at.strftime("%l:%M%P %-m.%-d.%y")}" %></p>
+        <% end %>
+      </div>
+
+      <div class='question-answered-at'>
+        <p><%= "asked at #{question.created_at.strftime("%l:%M %P, %-m.%-d.%y")}" %></p>
+        <p><%= "#{original_question_answers(question.question_id)} Answers in #{question.department.to_s}" %></p>
       </div>
     </div>
   </div>

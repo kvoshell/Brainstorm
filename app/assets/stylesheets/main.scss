@@ -4,70 +4,79 @@
 }
 
 body {
-  background-color: $light-blue;
+  background-color: $body-background;
 }
 
 .body-container {
   display: flex;
   height: 100vh;
   width: 100vw;
+}
 
-  .sidebar {
-    background-color: $dark-blue;
-    font-family: $regular;
-    height: 100vh;
-    justify-content: flex-start;
-    min-width: 200px;
-    text-align: center;
-    width: 18vw;
+.sidebar {
+  align-items: center;
+  background-color: $content-background;
+  display: flex;
+  flex-direction: column;
+  font-family: $regular;
+  height: 100vh;
+  justify-content: center;
+  margin-left: 1vw;
+  width: 17vw;
 
-    .sidebar-banner {
-      height: 2vh;
-      margin-top: 15vh;
-      margin-bottom: 10vh;
+  .sidebar-title {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 9vh;
+    width: 100%;
 
-      .sidebar-logo {
-        color: $light-blue;
-        font-family: $large;
-        text-decoration: none;
-      }
+    .sidebar-logo {
+      color: black;
+      font-family: $large;
+      text-decoration: none;
     }
 
-    .sidebar-links {
-      display: flex;
-      flex-direction: column;
-      height: 73vh;
-
-      .sidebar-item {
-        display: flex;
-        height: 5vh;
-        justify-content: center;
-
-        a {
-          color: $light-blue;
-          height: 50%;
-          padding: 10px 0;
-          text-decoration: none;
-          width: 100%;
-        }
-      }
-
-      .sidebar-item:hover {
-        background-color: $light-blue-clear;
-      }
-
-      .sidebar-hr {
-        margin: 1.25vh auto;
-        width: 65%;
-      }
-    } // .sidebar-links
-  } // .sidebar
-
-  .body-info {
-    height: 100vh;
-    justify-content: flex-end;
-    margin: 0 auto;
-    overflow: hidden;
-    width: 74vw;
+    .sidebar-logo:hover {
+      color: $light-green-actions;
+    }
   }
-} // body-container
+
+  .sidebar-links {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-left: auto;
+
+    a {
+      color: black;
+      width: 15vw;
+    }
+
+    a:hover {
+      background-color: $light-green-actions;
+    }
+
+    .sidebar-item {
+      align-items: center;
+      display: flex;
+      font-size: 1.1em;
+      height: 5vh;
+      padding-left: 2vw;
+      text-decoration: none;
+    }
+
+    .sidebar-hr {
+      margin: 1.25vh auto;
+      width: 60%;
+    }
+  } // .sidebar-links
+} // .sidebar
+
+.body-info {
+  height: 100vh;
+  justify-content: flex-end;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 76vw;
+}

@@ -10,7 +10,7 @@ class Question < ApplicationRecord
 
   def self.index_by_search(params)
     if params[:search]
-
+      
       if params[:search] == 'asked'
         questions = Question.where(user_id: params[:user_id])
       elsif params[:search] == 'answered'

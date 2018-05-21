@@ -16,7 +16,22 @@ class AnswersController < ApplicationController
     if @answer.save
       render "questions/show"
     else
-      flash[:error] = "We were unable to answer that question!"
+      flash[:alert] = "We were unable to answer that question!"
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def edit
+    @answer = Answer.find(params[:id])
+  end
+
+  def update
+    @answer = Answer.find(params[:id])
+
+    if @answer.update(answer_params)
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = "We were unable to change your answer!"
       redirect_back(fallback_location: root_path)
     end
   end

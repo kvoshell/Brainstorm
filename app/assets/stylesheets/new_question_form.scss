@@ -1,39 +1,14 @@
-.question {
+.new-question-form {
+  background-color: $content-green;
   border: 1px $border-one solid;
   border-radius: 3px;
   font-family: $regular;
-  margin-bottom: 1.25vh;
-  min-height: 80px;
-  overflow-y: scroll;
-  padding: .25rem;
-
-
-  h2 {
-    margin: 2vh 0;
-    text-align: center;
-  }
-
-  .gradiant-hr {
-    @include hr-one
-  }
-}
-
-.new-question-form {
-  font-family: $regular;
-
-  .guideline-title {
-    text-align: center;
-    font-family: $large;
-  }
-
-  .gradiant-hr {
-    @include hr-one
-  }
+  margin-top: 1vh;
 
   .new-question {
     align-items: center;
     display: flex;
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin: 2vh auto;
     width: 60vw;
   }

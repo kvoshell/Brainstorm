@@ -78,3 +78,10 @@ $large: 'RobotoSlab', serif;
 .form-submit-button:focus {
   outline: 0;
 }
+
+.aura {
+  background-color: $dark-green-actions;
+  border-radius: 50%;
+  color: white;
+  padding: 2px 6px;
+}

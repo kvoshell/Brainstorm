@@ -1,17 +1,129 @@
-<div class='answer-form-top'>
-  <h2><%= @question.title %></h2>
-  <p><%= @question.body %></p>
+<div class='question'>
+  <div class='question-content'>
+    <div class='question-text'>
+      <h3><%= @question.title %></h3>
+    </div>
+
+    <div class='question-text'>
+      <p><%= @question.body %></p>
+    </div>
+
+    <div class='question-tags'>
+      <span class='question-tag'>Ruby</span>
+      <span class='question-tag'>JavaScript</span>
+      <span class='question-tag'>Front-End Engineering</span>
+    </div>
+  </div>
+
+
+  <div class='question-data'>
+    <div class='question-buttons'>
+      <% if StarredQuestion.find_by(user_id: current_user.id, question_id: @question.id) %>
+        <%= link_to 'Unstar Question', starred_question_path(@question), method: :delete, class: 'form-submit-button' %>
+      <% else %>
+        <%= link_to 'Star Question', starred_questions_path(starred_question: {
+          user_id: current_user.id,
+          question_id: @question.id,
+          title: @question.title,
+          body: @question.body,
+          department: @question.department
+         }), method: :post, class: 'form-submit-button' %>
+      <% end %>
+
+      <% if @question.user_id == current_user.id %>
+        <%= link_to 'Edit Question', edit_question_path(@question.id), class: 'form-submit-button'%>
+      <% end %>
+
+      <%= button_tag "Answer Question", class: 'form-submit-button collapsible alt' %>
+    </div>
+
+    <div class='question-edited-at'>
+      <% if @question.updated_at != @question.created_at %>
+        <p><%= "edited at #{@question.updated_at.strftime("%l:%M %P %-m.%-d.%y")}" %></p>
+      <% end %>
+    </div>
+
+    <div class='question-answered-at'>
+      <p><%= "asked at #{@question.created_at.strftime("%l:%M %P, %-m.%-d.%y")}" %></p>
+      <% if controller_name == 'questions'%>
+        <p><%= "#{@question.answers.count} Answers in #{@question.department.to_s}" %></p>
+      <% else %>
+        <p><%= "#{@question.answers.count} Answers" %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class='answer-form collapsible-answer'>
+    <%= form_for [@question, Answer.new], url: question_answers_path(@question), method: :post do |answer| %>
+
+      <div class='form-group'>
+        <%= answer.text_area :body, class: 'form-control answer-form-body', rows: 5, placeholder: "Type your answer here" %>
+      </div>
+
+      <div class="form-group">
+        <%= answer.submit "Submit", method: :post, class: 'form-submit-button alt' %>
+        <%= link_to "Cancel", question_path(@question), class: 'form-submit-button', data: {confirm: 'Are you sure you want to cancel this answer?'} %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<div class='answer-form-middle'>
+<div class='answer-view-answers'>
+
   <% if @question.answers.empty? %>
-    <h1>No Answers Yet!</h1>
+
+    <div class='answer'>
+      <h2 class='no-answer'>No Answers Yet!</h2>
+    </div>
   <% else %>
     <% @question.answers.each do |answer| %>
-      <h5><%= answer.user.as_json %></h5>
+      <div class='answer'>
+        <div class='answer-body'>
+          <p><%= answer.body %></p>
+        </div>
+        <div class='answer-data'>
+          <div class='question-buttons'>
+            <% if answer.user_id == current_user.id %>
+              <%= link_to 'Edit Answer', edit_question_answer_path(answer.question_id, answer.id), class: 'form-submit-button' %>
+            <% end %>
+          </div>
 
+          <div class='question-edited-at'>
+            <% if answer.updated_at != answer.created_at %>
+              <p><%= "edited at #{answer.updated_at.strftime("%l:%M%P %-m.%-d.%y")}" %></p>
+            <% end %>
+          </div>
+
+          <div class='question-answered-at'>
+            <p class='answer-info'><%= answer.user.user_name %>, <%= answer.user.title %></p>
+            <p class='answer-info'><%= answer.created_at.strftime("%l:%M %P, %-m.%-d.%y") %></p>
+          </div>
+        </div>
+      </div>
     <% end %>
   <% end %>
 </div>
 
-<%= render "shared/answer_form" %>
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      var content = this.parentElement.parentElement.nextElementSibling;
+      this.classList.toggle("active");
+
+      if (this.classList.contains("active")){
+        this.innerHTML = "Undo Answer";
+      } else {
+        this.innerHTML = "Answer Question";
+      }
+
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  }
+</script>

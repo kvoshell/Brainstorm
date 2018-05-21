@@ -1,0 +1,34 @@
+<div class='header-title'>
+  <% if controller_name == 'questions' %>
+    <h2><%= 'My Questions' %><h2/>
+  <% elsif controller_name == 'answers' %>
+    <h2><%= 'My Answers' %><h2/>
+  <% elsif controller_name == 'starred_questions' %>
+    <h2><%= 'Starred Questions' %><h2/>
+  <% else %>
+    <h2><%= controller_name.gsub('_', ' ').titleize.chomp('s') %></h2>
+  <% end %>
+</div>
+
+<div class='header-queries'>
+  <% if controller_name == 'questions' %>
+    <%= link_to 'Newest', questions_path(filter: 'newest', search: 'asked'), class:'header-item form-submit-button' %>
+    <%= link_to 'Oldest', questions_path(filter: 'oldest', search: 'asked'), class:'header-item form-submit-button' %>
+    <%= link_to 'Most Answered', questions_path(filter: 'most_answers', search: 'asked'), class:'header-item form-submit-button' %>
+    <%= link_to 'Least Answered', questions_path(filter: 'least_answers', search: 'asked'), class:'header-item form-submit-button' %>
+
+  <% elsif controller_name == 'starred_questions'%>
+    <%= link_to 'Newest', starred_questions_path(filter: 'newest'), class:'header-item form-submit-button' %>
+    <%= link_to 'Oldest', starred_questions_path(filter: 'oldest'), class:'header-item form-submit-button' %>
+    <%= link_to 'Most Answered', starred_questions_path(filter: 'most_answers'), class:'header-item form-submit-button' %>
+    <%= link_to 'Least Answered', starred_questions_path(filter: 'least_answers'), class:'header-item form-submit-button' %>
+
+  <%else %>
+    <%= link_to 'Newest', controller_name_index_path('newest'), class:'header-item form-submit-button' %>
+    <%= link_to 'Oldest', controller_name_index_path('oldest'), class:'header-item form-submit-button' %>
+    <% unless controller_name == 'answers' %>
+      <%= link_to 'Most Answered', controller_name_index_path('most_answers'), class:'header-item form-submit-button' %>
+      <%= link_to 'Least Answered', controller_name_index_path('least_answers'), class:'header-item form-submit-button' %>
+    <% end %>
+  <% end %>
+</div>

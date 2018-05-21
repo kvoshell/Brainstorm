@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
-  
+
+  devise_for :users
+
   resources :questions do
     resources :answers
   end
 
-  get 'account_managements/index'
+  resources :starred_questions, only: [:index, :create, :destroy]
+  resources :answers, only: :index
 
-  get 'developments/index'
+  resources :developments
+  resources :designs
+  resources :account_managements
+  resources :others
 
-  get 'designs/index'
-
-  get 'welcome/index'
-
-  root 'welcome#index'
+  root 'developments#index'
 end

@@ -1,0 +1,67 @@
+.login-form {
+  align-items: center;
+  background-color: $content-background;
+  border: 1px $border-one solid;
+  display: flex;
+  flex-direction:column;
+  font-family: $regular;
+  height: 80vh;
+  justify-content: center;
+  margin: 5vh auto;
+  width: 30vw;
+
+  h1 {
+    font-family: $large;
+  }
+
+  form {
+    width: 70%;
+  }
+
+  .gradiant-hr {
+    @include hr-one
+    }
+
+  .login-title {
+    margin-bottom: 2vh;
+  }
+
+  .field {
+    margin: 2vh auto;
+  }
+
+  .login-field {
+    display: flex;
+    font-size: 1.25rem;
+    justify-content: center;
+    margin: .5vh auto;
+    width: 100%;
+  }
+
+  .actions {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .link-button {
+      margin-bottom: 1vh;
+      text-align: center;
+      width: 12vw;
+    }
+  }
+
+  .login-links {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    width: 100%;
+
+    .link-button {
+      margin-bottom: 1vh;
+      width: 11.25vw;
+    }
+  }
+}

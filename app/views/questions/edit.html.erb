@@ -1,0 +1,40 @@
+<div class='edit-question-form'>
+  <div class='question even new-question-form'>
+    <%= form_for @question, method: :put do |question| %>
+      <%= question.hidden_field :user_id, value: current_user.id %>
+
+      <h1 class='guideline-title'>Edit Your Question</h1>
+
+      <hr class='gradiant-hr'>
+
+      <div class='form-group'>
+        <%= question.text_field :title, class: 'form-control new-question', required: true %>
+      </div>
+
+      <div class='form-group'>
+        <%= question.text_area :body, class: 'form-control new-question', rows: 6, required: true %>
+      </div>
+
+      <div class='form-group new-question-buttons'>
+        <span>This Question Is For: &nbsp;</span>
+
+        <%= question.radio_button :department, 'Development', class: 'new-question-button', checked: (@question.department == 'Development') %>
+        <%= question.label :department, "Development", class: 'new-question-label' %>
+
+        <%= question.radio_button :department, 'Design', class: 'new-question-button', checked: (@question.department == 'Design') %>
+        <%= question.label :department, "Design", class: 'new-question-label' %>
+
+        <%= question.radio_button :department, 'Account Management', class: 'new-question-button', checked: (@question.department == 'Account Management') %>
+        <%= question.label :department, "Account Management", class: 'new-question-label' %>
+
+        <%= question.radio_button :department, 'Other', class: 'new-question-button', checked: (@question.department == 'Other') %>
+        <%= question.label :department, "Other", class: 'new-question-label' %>
+      </div>
+
+      <div class="form-group new-question-submit-buttons">
+        <%= question.submit "Submit", method: :post, class: 'form-submit-button' %>
+        <%= link_to "Cancel", render_view_by_department, class: 'form-submit-button', data: {confirm: 'Are you sure you want to cancel this answer?'} %>
+      </div>
+    <% end %>
+  </div>
+</div>

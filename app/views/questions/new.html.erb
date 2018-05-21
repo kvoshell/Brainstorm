@@ -1,0 +1,72 @@
+<div class='new-question-content'>
+  <h1 class='new-question-title'>Ask A Question</h1>
+
+  <hr class='gradiant-hr'>
+  <div class='guidelines'>
+    <div class='guideline'>
+      <h3 class='guideline-title'>Welcome!</h3>
+        <p class='guideline-body'>
+          Brainstorm is a collaborative space that encourages curiosity, values feedback,
+          and provides insight into our collective expertise in an organized and engaging way.
+          When submitting a question or answer, there are a few tips that will help to
+          provide a great experience for everyone.
+        </p>
+    </div>
+    <div class='guideline'>
+      <h3 class='guideline-title'>Investigate First, Inquire Second</h3>
+        <p class='guideline-body'>
+          Do you have a question you're dying to ask? That's great, just make sure someone else
+          hasn't already asked it first!  Keeping duplicate questions to a minimum helps to
+          consolidate knowledge into one easy to find place.
+        </p>
+    </div>
+    <div class='guideline'>
+      <h3 class='guideline-title'>Questions Are Anonymous, Answers Are Not</h3>
+        <p class='guideline-body'>
+          There's no such thing as a dumb question! But just in case you're still apprehensive,
+          Brainstorm will keep your curiosity anonymous.  However, you should feel proud about
+          helping others learn, so we will proudly display your user name and title for each answer!
+        </p>
+    </div>
+    <div class='guideline'>
+      <h3 class='guideline-title'>Rules and Other Boring Stuff</h3>
+        <p class='guideline-body'>
+          Organization is key, so please try to keep departmental questions and answers on track! Also,
+          please keep all questions and answers respectful, professional, and helpful!
+        </p>
+    </div>
+  </div>
+  
+  <div class='new-question-form'>
+    <%= form_for [Question.new], method: :post do |question| %>
+      <%= question.hidden_field :user_id, value: current_user.id %>
+
+      <div class='form-group'>
+        <%= question.text_field :title, class: 'form-control new-question', placeholder: "Question Title", required: true %>
+      </div>
+
+      <div class='form-group'>
+        <%= question.text_area :body, class: 'form-control new-question', rows: 6, placeholder: "Question Body", required: true %>
+      </div>
+
+      <div class='form-group new-question-buttons'>
+        <span>This Question Is For: &nbsp;</span>
+        <%= question.radio_button :department, 'Development', class: 'new-question-button' %>
+        <%= question.label :department, "Development", class: 'new-question-label' %>
+
+        <%= question.radio_button :department, 'Design', class: 'new-question-button' %>
+        <%= question.label :department, "Design", class: 'new-question-label' %>
+
+        <%= question.radio_button :department, 'Account Management', class: 'new-question-button' %>
+        <%= question.label :department, "Account Management", class: 'new-question-label' %>
+
+        <%= question.radio_button :department, 'Other', class: 'new-question-button', checked: true %>
+        <%= question.label :department, "Other", class: 'new-question-label' %>
+      </div>
+
+      <div class="form-group new-question-submit-buttons">
+        <%= question.submit "Submit", method: :post, class: 'form-submit-button' %>
+      </div>
+    <% end %>
+  </div>
+</div>

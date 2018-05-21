@@ -1,0 +1,2 @@
+module StarredQuestionsHelper
+end

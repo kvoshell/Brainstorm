@@ -3,30 +3,80 @@
   padding: 0;
 }
 
-.sidebar {
-  height: 100vh;
-  width: 20vw;
-  border: 1px #000000 solid;
-  display: inline-block;
-  position: absolute;
+body {
+  background-color: $body-background;
+}
 
-  .sidebar-banner {
-    height: 18vh;
-    border: 1px #aaeced solid;
+.body-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.sidebar {
+  align-items: center;
+  background-color: $content-background;
+  display: flex;
+  flex-direction: column;
+  font-family: $regular;
+  height: 100vh;
+  justify-content: center;
+  margin-left: 1vw;
+  width: 17vw;
+
+  .sidebar-title {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 9vh;
+    width: 100%;
+
+    .sidebar-logo {
+      color: black;
+      font-family: $large;
+      text-decoration: none;
+    }
+
+    .sidebar-logo:hover {
+      color: $light-green-actions;
+    }
   }
 
   .sidebar-links {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-left: auto;
+
     a {
+      color: black;
+      width: 15vw;
+    }
+
+    a:hover {
+      background-color: $light-green-actions;
+    }
+
+    .sidebar-item {
+      align-items: center;
+      display: flex;
+      font-size: 1.1em;
+      height: 5vh;
+      padding-left: 2vw;
       text-decoration: none;
     }
-  }
-}
+
+    .sidebar-hr {
+      margin: 1.25vh auto;
+      width: 60%;
+    }
+  } // .sidebar-links
+} // .sidebar
 
 .body-info {
-  margin-left: 30vw;
   height: 100vh;
-  width: 60vw;
-  border: 1px #239487 solid;
-  overflow-y: scroll;
+  justify-content: flex-end;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 76vw;
 }

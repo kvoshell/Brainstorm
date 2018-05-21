@@ -12,7 +12,8 @@ require 'faker'
     full_name: Faker::Simpsons.character,
     user_name: Faker::HitchhikersGuideToTheGalaxy.character,
     title: Faker::Hipster.word,
-    email: Faker::Internet.email
+    email: Faker::Internet.email,
+    password: "hithere"
   )
 end
 
@@ -20,14 +21,15 @@ puts '*' * 100
 puts '10 Users seeded'
 
 100.times do |a|
+  user = User.find(rand(1..10))
   question = Question.create!(
-    user_id: rand(1..5),
+    user_id: user.id,
     title: Faker::FamilyGuy.quote,
     body: Faker::Hipster.paragraph,
-    department: rand(0..2)
+    department: rand(0..3)
   )
 
-  rand(1..3).times do |b|
+  rand(0..10).times do |b|
     question.answers.create(
       question_id: question.id,
       user_id: question.user_id,

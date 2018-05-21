@@ -1,13 +1,39 @@
 class AnswersController < ApplicationController
-  # byebug
   before_action :set_question
 
   def index
-    @answers = @question.answers.all
+    @answers = if params[:search] && params[:search] == 'answered'
+      Answer.where(user_id: current_user)
+    else
+      @question.answers.all
+    end
   end
 
   def create
-    @answer = @question.answers.create(answer_params)
+    @answer = @question.answers.new(answer_params)
+    @answer.user_id = current_user.id
+
+    if @answer.save
+      render "questions/show"
+    else
+      flash[:alert] = "We were unable to answer that question!"
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def edit
+    @answer = Answer.find(params[:id])
+  end
+
+  def update
+    @answer = Answer.find(params[:id])
+
+    if @answer.update(answer_params)
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = "We were unable to change your answer!"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def show
@@ -19,10 +45,12 @@ class AnswersController < ApplicationController
   private
 
   def answer_params
-    # params.require(:answer).permit(:question_id, :user_id, :body)
+    params.require(:answer).permit(:question_id, :user_id, :body)
   end
 
   def set_question
-    @question = Question.find(params[:question_id])
+    unless params[:search]
+      @question = Question.find(params[:question_id])
+    end
   end
 end

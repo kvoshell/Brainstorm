@@ -58,7 +58,7 @@
                 <% end %>
               </div>
               <div class='question-answered-at'>
-                <p class='answer-info'><%= answer.user.user_name %>, <%= answer.user.title %></p>
+                <p class='answer-info'><%= answer.user.user_name %>, <%= answer.user.title %> &nbsp; <span class='aura'><%= answer.user.aura %></span></p>
                 <p class='answer-info'><%= answer.created_at.strftime("%l:%M%P, %-m.%-d.%y") %></p>
               </div>
             </div>

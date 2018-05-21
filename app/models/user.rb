@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_many :answers
 
-  validates :user_name, length: { minimum: 2, maximum: 40 }, uniqueness: { case_sensitive: false }
+  validates :user_name, length: { minimum: 2, maximum: 50 }, uniqueness: { case_sensitive: false }
   validates :title, length: { minimum: 2, maximum: 40 }
 end

@@ -9,7 +9,19 @@
     <%= devise_error_messages! %>
 
     <div class="field">
-      <%= f.email_field :email, class: "login-field", autofocus: true, autocomplete: "email", placeholder: "Email" %>
+      <%= f.text_field :full_name, class: "login-field", autofocus: true, placeholder: "Full Name" %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :user_name, class: "login-field", placeholder: "User Name" %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :title, class: "login-field", placeholder: "Title" %>
+    </div>
+
+    <div class="field">
+      <%= f.email_field :email, class: "login-field", autocomplete: "email", placeholder: "Email" %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

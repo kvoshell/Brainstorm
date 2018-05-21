@@ -10,10 +10,11 @@ require 'faker'
 10.times do |a|
   User.create!(
     full_name: Faker::Simpsons.character,
-    user_name: Faker::HitchhikersGuideToTheGalaxy.character,
+    user_name: Faker::Name.name,
     title: Faker::Hipster.word,
     email: Faker::Internet.email,
-    password: "hithere"
+    password: "hithere",
+    aura: rand(1..255)
   )
 end
 

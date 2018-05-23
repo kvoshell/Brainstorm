@@ -1,0 +1,53 @@
+.content-form {
+  background-color: $content-background;
+  border: 1px $border-one solid;
+  border-radius: 3px;
+  font-family: $regular;
+  margin-top: 1vh;
+}
+
+.form-title {
+  text-align: center;
+}
+
+.edit-form-buttons {
+  padding-bottom: 1vh;
+}
+
+.new-question {
+  align-items: center;
+  display: flex;
+  font-size: 1.1rem;
+  margin: 1vh auto;
+  width: 60vw;
+}
+
+.new-question-title {
+  padding-top: 1vh;
+}
+
+.new-question-buttons {
+  margin: 1vh auto;
+  width: 60vw;
+}
+
+.new-question-label {
+  margin-right: 1vw;
+}
+
+.question-link {
+  margin-right: 1vw;
+  padding: 5px;
+}
+
+.new-question-submit-buttons {
+  margin: 0 auto 2vh;
+  width: 60vw;
+}
+
+.new-tag {
+  align-items: center;
+  display: flex;
+  font-size: 1.1rem;
+  width: 35vw;
+}

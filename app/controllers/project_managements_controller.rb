@@ -1,4 +1,4 @@
-class AccountManagementsController < ApplicationController
+class ProjectManagementsController < ApplicationController
 
   def index
     order_filter = params[:filter] || 'newest'

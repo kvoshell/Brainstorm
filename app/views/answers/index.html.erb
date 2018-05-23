@@ -2,61 +2,65 @@
   <%= render "shared/questions_header" %>
 </div>
 
-<div class='answer-view-answers'>
+<div class='user-question-answers'>
+
   <% if @answers.empty? %>
     <div class='answer'>
       <h2 class='no-answer'>No Answers Yet!</h2>
     </div>
+
   <% else %>
     <% @answers.each do |answer| %>
-      <div class='question'>
-        <div class='question-content'>
-
-          <div class='question-text'>
-            <h3><%= answer.question.title %></h3>
+      <div class='full-question'>
+        <div class='full-question-content'>
+          <div class='full-question-text'>
+            <h3><%= markdown(answer.question.title) %></h3>
           </div>
 
-          <div class='question-text'>
-            <p><%= answer.question.body %></p>
+          <div class='full-question-text'>
+            <p><%= markdown(answer.question.body) %></p>
           </div>
 
           <div class='question-tags'>
-            <span class='question-tag'>Ruby</span>
-            <span class='question-tag'>JavaScript</span>
-            <span class='question-tag'>Front-End Engineering</span>
-          </div>
-        </div>
-
-        <div class='question-data'>
-          <div class='question-buttons'>
-            <%= link_to 'More Info', question_path(answer.question), class: 'form-submit-button' %>
-            <%= button_tag "See My Answer", class: 'form-submit-button collapsible' %>
-          </div>
-
-          <div class='question-edited-at'>
-            <% if answer.question.updated_at != answer.question.created_at %>
-              <p><%= "edited at #{answer.question.updated_at.strftime("%l:%M %P %-m.%-d.%y")}" %></p>
+            <% answer.question.tags.each do |tag| %>
+              <span class='question-tag'><%= tag.name %></span>
             <% end %>
           </div>
 
-          <div class='question-answered-at'>
-            <p><%= "asked at #{answer.question.created_at.strftime("%l:%M %P %-m.%-d.%y")}" %></p>
-            <p><%= "#{answer.question.answers.count} Answers in #{answer.question.department.to_s}" %></p>
+          <div class='question-data'>
+            <div class='question-buttons'>
+              <%= link_to 'More Info', question_path(answer.question), class: 'form-submit-button' %>
+              <%= button_tag "See My Answer", class: 'form-submit-button collapsible' %>
+            </div>
+
+            <div class='question-edited-at'>
+              <% if answer.question.updated_at != answer.question.created_at %>
+                <p><%= "edited at #{answer.question.updated_at.strftime("%l:%M %P %-m.%-d.%y")}" %></p>
+              <% end %>
+            </div>
+
+            <div class='question-answered-at'>
+              <p><%= "asked at #{answer.question.created_at.strftime("%l:%M %P %-m.%-d.%y")}" %></p>
+              <p><%= "#{answer.question.answers.count} Answers in #{answer.question.department.to_s}" %></p>
+            </div>
           </div>
         </div>
 
         <div class='collapsible-answer'>
           <div class='answer'>
-            <p class='answer-body'><%= answer.body %></p>
+            <p class='answer-body'><%= markdown(answer.body) %></p>
+
             <div class='answer-data'>
               <div class='question-buttons'>
                 <%= link_to 'Edit Answer', edit_question_answer_path(answer.question.id, answer.id), class: 'form-submit-button'%>
               </div>
+
               <div class='question-edited-at'>
                 <% if answer.updated_at != answer.created_at %>
                   <p><%= "edited at #{answer.updated_at.strftime("%l:%M%P %-m.%-d.%y")}" %></p>
                 <% end %>
               </div>
+
               <div class='question-answered-at'>
                 <p class='answer-info'><%= answer.user.user_name %>, <%= answer.user.title %> &nbsp; <span class='aura'><%= answer.user.aura %></span></p>
                 <p class='answer-info'><%= answer.created_at.strftime("%l:%M%P, %-m.%-d.%y") %></p>
@@ -70,18 +74,18 @@
 </div>
 
 <script>
-  var coll = document.getElementsByClassName("collapsible");
-  var i;
+  let coll = document.getElementsByClassName("collapsible");
+  let i;
 
   for (i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function() {
-      var content = this.parentElement.parentElement.nextElementSibling;
+      let content = this.parentElement.parentElement.parentElement.nextElementSibling;
       this.classList.toggle("active");
 
       if (this.classList.contains("active")){
-        this.innerHTML = "See My Answer";
-      } else {
         this.innerHTML = "Collapse Answer";
+      } else {
+        this.innerHTML = "See My Answer";
       }
 
       if (content.style.maxHeight){

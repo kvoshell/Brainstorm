@@ -2,88 +2,104 @@
   border-radius: 3px;
   font-family: $regular;
   margin: 2vh auto;
-
-  @include collapsible-animation;
-  width: 100%;
-
-  .answer-form-body {
-    display: flex;
-    font-size: 1rem;
-    justify-content: center;
-    margin: 2vh 0;
-    width: 90%;
-  }
-}
-
-.answer-view-answers {
-  height: 80vh;
-  margin-right: -50px;
-  margin-top: 2vh;
-  overflow-y: scroll;
-  padding-right: 50px;
-  width: 100%;
-
-  .answer {
-    background: $content-background;
-    border: 1px $border-one solid;
-    border-radius: 3px;
-    display: flex;
-    flex-direction: column;
-    margin: 1.75vh 1.5vw;
-    min-height: 80px;
-    padding: .25rem;
-    padding-bottom: 1vh;
-
-    .no-answer {
-      display: flex;
-      justify-content: center;
-      margin: auto 0;
-    }
-
-    .answer-body {
-      margin-bottom: 2vh;
-      padding: 1vh 2vw;
-      width: 90%;
-    }
-
-    .answer-data {
-      @extend .question-data;
-      padding: 1vh 2vw;
-      width: 90%;
-
-      .answer-links {
-        margin-top: 1vh;
-        width: 60%;
-      }
-
-      .answer-data {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        font-family: $regular;
-        font-size: .9rem;
-        justify-content: center;
-        padding-right: 3vw;
-        width: 40%;
-      }
-    } // .answer-actions
-
-    .answer-divider {
-      margin: 1vh auto;
-    }
-  }
-} // .answer-view-answers
-
-.answer-info {
-  font-size: .9rem;
 }
 
 .collapsible-answer {
   @include collapsible-animation;
+  width: 100%;
+}
 
-  .answer-body {
-    margin: 2vh auto 2vh;
-    padding: 1vh 1.5vw;
-    width: 90%;
-  }
+.answer-form-body {
+  display: flex;
+  justify-content: center;
+  margin: 2vh auto;
+  width: 90%;
+}
+
+.answer-input {
+  font-size: 1rem;
+  width: 80%;
+}
+
+.answer-form-actions {
+  padding-top: 2vh;
+}
+
+.question-answers {
+  height: 70vh;
+  margin-right: -50px;
+  margin-top: 1vh;
+  overflow-y: scroll;
+  padding-right: 50px;
+  width: 100%;
+}
+
+.user-question-answers {
+  @extend .question-answers;
+  height: 90vh;
+}
+
+.answer {
+  @extend .question;
+  margin: 1.15vh auto;
+  width: 90%;
+}
+
+.no-answer {
+  display: flex;
+  justify-content: center;
+  margin: auto 0;
+}
+
+.answer-body {
+  margin-bottom: 1vh;
+  padding: 1vh 2vw;
+}
+
+.answer-data {
+  @extend .question-data;
+  align-items: center;
+  font-family: $regular;
+  justify-content: center;
+  margin: 0 auto;
+  min-height: 10vh;
+  width: 80%;
+}
+
+.answer-buttons {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  width: 25%;
+}
+
+.answer-edited-at {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 25%;
+}
+
+.answer-answered-at {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: .5vw;
+  width: 40%;
+}
+
+.answer-aura {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  width: 10%;
+}
+
+.answer-divider {
+  margin: 1vh auto;
+}
+
+.answer-info {
+  font-size: .9rem;
 }

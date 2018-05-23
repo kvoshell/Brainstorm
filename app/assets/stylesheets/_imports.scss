@@ -1,14 +1,14 @@
 
 // COLORS
-$body-background: rgb(255, 255, 255);
-$body-background-clear: rgba(213, 232, 236, 0.3);
-$content-background: rgba(230, 235, 230, 0.4);
+$body-background: rgba(195, 200, 195, 0.4);
+$content-background: rgba(166, 189, 204, 0.4);
 $content-green: rgba(174, 218, 171, .6);
 
 $light-green-actions: rgb(152, 226, 181);
 $dark-green-actions: rgb(112, 198, 146);
-$light-blue: rgb(13, 129, 223);
 
+$light-blue: rgb(13, 129, 223);
+$dark-blue-transparent: rgba(80, 138, 168, 0.5);
 $dark-blue: rgb(80, 138, 168);
 
 $border-one: rgb(138, 141, 142);
@@ -83,5 +83,5 @@ $large: 'RobotoSlab', serif;
   background-color: $dark-green-actions;
   border-radius: 50%;
   color: white;
-  padding: 2px 6px;
+  padding: 3px 8px;
 }

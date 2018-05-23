@@ -1,20 +1,24 @@
+// ************************
+// * Question Index Views *
+// ************************
+
 .question {
   background-color: $content-background;
   border: 1px $border-one solid;
   border-radius: 3px;
   font-family: $regular;
   margin-bottom: 1.15vh;
-  padding: .9rem;
+  overflow-y: hidden;
+  padding: .9em;
 }
 
 .question-content {
   display: flex;
   flex-direction: column;
-  height: 65%;
 }
 
 .question-text {
-  height: 33%;
+  height: 25%;
   margin-bottom: 1vh;
 
   h3, p {
@@ -31,34 +35,28 @@
 .question-tags {
   align-items: flex-end;
   display: flex;
-  height: 33%;
+  height: 25%;
   margin-bottom: 1vh;
 }
 
 .question-data {
   display: flex;
   font-size: .9rem;
-  height: 35%;
-  margin-bottom: 1vh;
+  height: 50%;
+}
 
-  .question-buttons {
-    align-items: center;
-    display: flex;
-    justify-content: flex-start;
-    width: 33%;
-  }
-  .question-edited-at {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    width: 33%;
-  }
-  .question-answered-at {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    width: 33%;
-  }
+.question-buttons {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  width: 40%;
+}
+
+.question-edited-at {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 30%;
 }
 
 .question-tag {
@@ -77,10 +75,29 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 33%;
+  width: 30%;
 }
 
-.data-hr {
-  width: 25%;
-  border: 1px $border-one solid;
+
+// **********************
+// * Question Show View *
+// **********************
+
+.full-question {
+  @extend .question;
+  padding: 1.1em;
+  padding-right: .5em;
+
+}
+
+.full-question-content {
+  margin-top: 2vh;
+}
+
+.full-question-text {
+  margin-bottom: 1vh;
+
+  h3 {
+    font-family: $large;
+  }
 }

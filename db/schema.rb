@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_21_144728) do
+ActiveRecord::Schema.define(version: 2018_05_22_190240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_144728) do
     t.integer "answers_count", default: 0, null: false
   end
 
-  create_table "starred_questions", force: :cascade do |t|
+  create_table "saved_questions", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "question_id"
     t.string "title"
@@ -43,8 +43,16 @@ ActiveRecord::Schema.define(version: 2018_05_21_144728) do
     t.integer "department"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_starred_questions_on_question_id"
-    t.index ["user_id"], name: "index_starred_questions_on_user_id"
+    t.index ["question_id"], name: "index_saved_questions_on_question_id"
+    t.index ["user_id"], name: "index_saved_questions_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.bigint "question_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_tags_on_question_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,6 +83,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_144728) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
-  add_foreign_key "starred_questions", "questions"
-  add_foreign_key "starred_questions", "users"
+  add_foreign_key "saved_questions", "questions"
+  add_foreign_key "saved_questions", "users"
+  add_foreign_key "tags", "questions"
 end

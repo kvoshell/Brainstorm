@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 body {
@@ -20,63 +21,79 @@ body {
   flex-direction: column;
   font-family: $regular;
   height: 100vh;
-  justify-content: center;
+  justify-content: flex-start;
   margin-left: 1vw;
   width: 17vw;
+}
 
-  .sidebar-title {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    height: 9vh;
-    width: 100%;
+.sidebar-upper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 9vh;
+  justify-content: flex-start;
+  margin: 2vh auto;
+}
 
-    .sidebar-logo {
-      color: black;
-      font-family: $large;
-      text-decoration: none;
-    }
+.sidebar-title {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 9vh;
+  width: 100%;
+}
 
-    .sidebar-logo:hover {
-      color: $light-green-actions;
-    }
+.sidebar-logo {
+  color: black;
+  font-family: $large;
+  text-decoration: none;
+}
+
+.sidebar-account-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6vh;
+}
+
+.sidebar-user {
+  padding: 5px;
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 5vh;
+
+  a {
+    color: black;
+    width: 15vw;
   }
 
-  .sidebar-links {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    margin-left: auto;
+  a:hover {
+    background-color: $dark-blue-transparent;
+  }
+}
 
-    a {
-      color: black;
-      width: 15vw;
-    }
+.sidebar-item {
+  align-items: center;
+  display: flex;
+  font-size: 1.1em;
+  height: 5vh;
+  padding-left: 2vw;
+  text-decoration: none;
+}
 
-    a:hover {
-      background-color: $light-green-actions;
-    }
-
-    .sidebar-item {
-      align-items: center;
-      display: flex;
-      font-size: 1.1em;
-      height: 5vh;
-      padding-left: 2vw;
-      text-decoration: none;
-    }
-
-    .sidebar-hr {
-      margin: 1.25vh auto;
-      width: 60%;
-    }
-  } // .sidebar-links
-} // .sidebar
+.sidebar-hr {
+  margin: 1.25vh auto;
+  width: 60%;
+}
 
 .body-info {
   height: 100vh;
   justify-content: flex-end;
   margin: 0 auto;
-  overflow: hidden;
+  overflow-y: hidden;
   width: 76vw;
 }

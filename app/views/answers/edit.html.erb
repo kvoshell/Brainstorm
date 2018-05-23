@@ -1,31 +1,30 @@
-<div class='edit-question-form'>
-  <div class='answer-view-question'>
-    <div class='answer-view-content even'>
-      <div class='answer-view-title'>
-        <h3><%= @question.title %></h3>
-      </div>
+<div class='full-question'>
+  <div class='question-content'>
+    <div class='full-question-text'>
+      <h3><%= markdown(@question.title) %></h3>
+    </div>
 
-      <div class='answer-view-body'>
-        <p><%= @question.body %></p>
-      </div>
+    <div class='full-question-text'>
+      <p><%= markdown(@question.body) %></p>
     </div>
   </div>
-  <div class='question even new-question-form'>
-    <%= form_for @answer, url: question_answer_path(@answer.question_id, @answer.id), method: :put do |answer| %>
-      <%= answer.hidden_field :user_id, value: current_user.id %>
+</div>
 
-      <h1 class='guideline-title'>Edit Your Answer</h1>
+<div class='full-question content-form'>
+  <%= form_for @answer, url: question_answer_path(@answer.question_id, @answer.id), method: :put do |answer| %>
+    <%= answer.hidden_field :user_id, value: current_user.id %>
 
-      <hr class='gradiant-hr'>
+    <h2 class='form-title'>Edit Your Answer</h2>
 
-      <div class='form-group'>
-        <%= answer.text_area :body, class: 'form-control new-question', rows: 6, required: true %>
-      </div>
+    <hr class='gradiant-hr'>
 
-      <div class="form-group new-question-submit-buttons">
-        <%= answer.submit "Submit", method: :post, class: 'form-submit-button' %>
-        <%= link_to "Cancel", question_path(@answer.question.id), data: {confirm: 'Are you sure you want to cancel this edit?'}, class: 'form-submit-button' %>
-      </div>
-    <% end %>
-  </div>
+    <div class='form-group answer-form-body'>
+      <%= answer.text_area :body, class: 'form-control answer-input', rows: 6, required: true %>
+    </div>
+
+    <div class="form-group answer-form-actions edit-form-buttons">
+      <%= answer.submit "Submit", method: :post, class: 'form-submit-button' %>
+      <%= link_to "Cancel", question_path(@answer.question.id), data: {confirm: 'Are you sure you want to cancel this edit?'}, class: 'form-submit-button' %>
+    </div>
+  <% end %>
 </div>

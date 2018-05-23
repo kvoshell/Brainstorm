@@ -1,6 +1,6 @@
-class CreateStarredQuestions < ActiveRecord::Migration[5.2]
+class CreateSavedQuestions < ActiveRecord::Migration[5.2]
   def change
-    create_table :starred_questions do |t|
+    create_table :saved_questions do |t|
       t.references :user, foreign_key: true
       t.references :question, foreign_key: true
       t.string :title

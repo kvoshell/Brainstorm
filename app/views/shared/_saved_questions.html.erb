@@ -3,24 +3,20 @@
   <div class='question'>
     <div class='question-content'>
       <div class='question-text'>
-        <h3><%= question.title %></h3>
-      </div>
-
-      <div class='question-text'>
-        <p><%= question.body %></p>
+        <h3><%= markdown(question.title) %></h3>
       </div>
 
       <div class='question-tags'>
-        <span class='question-tag'>Ruby</span>
-        <span class='question-tag'>JavaScript</span>
-        <span class='question-tag'>Front-End Engineering</span>
+        <% original_question(question.id).tags.each do |tag| %>
+          <span class='question-tag'><%= tag.name %></span>
+        <% end %>
       </div>
     </div>
 
     <div class='question-data'>
       <div class='question-buttons'>
         <%= link_to 'More Info', question_path(question.question_id), class: 'form-submit-button' %>
-        <%= link_to 'Unstar Question', starred_question_path(question.question_id), method: :delete, class: 'form-submit-button' %>
+        <%= link_to 'Unsave Question', saved_question_path(question.question_id), method: :delete, class: 'form-submit-button' %>
       </div>
 
       <div class='question-edited-at'>
@@ -31,7 +27,7 @@
 
       <div class='question-answered-at'>
         <p><%= "asked at #{question.created_at.strftime("%l:%M %P, %-m.%-d.%y")}" %></p>
-        <p><%= "#{original_question_answers(question.question_id)} Answers in #{question.department.to_s}" %></p>
+        <p><%= "#{original_question(question.question_id).answers.count} Answers in #{question.department.to_s}" %></p>
       </div>
     </div>
   </div>

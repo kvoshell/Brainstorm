@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class StarredQuestionTest < ActiveSupport::TestCase
+class SavedQuestionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

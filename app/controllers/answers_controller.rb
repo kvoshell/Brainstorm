@@ -1,17 +1,16 @@
 class AnswersController < ApplicationController
-  before_action :set_question
+  before_action :set_question, except: :index
 
   def index
-    @answers = if params[:search] && params[:search] == 'answered'
-      Answer.where(user_id: current_user)
-    else
-      @question.answers.all
-    end
+    order_filter = params[:filter] || 'newest'
+
+    @answers = current_user.answers.order(OrderHelper.sort_by_filter(order_filter))
   end
 
   def create
     @answer = @question.answers.new(answer_params)
     @answer.user_id = current_user.id
+    AuraTracker.manage_aura('new_answer', @answer.user_id)
 
     if @answer.save
       render "questions/show"
@@ -29,7 +28,7 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
 
     if @answer.update(answer_params)
-      redirect_back(fallback_location: root_path)
+      render "questions/show"
     else
       flash[:alert] = "We were unable to change your answer!"
       redirect_back(fallback_location: root_path)

@@ -11,10 +11,12 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    @tag = @question.tags.build
   end
 
   def create
     @question = Question.new(questions_params)
+    AuraTracker.manage_aura('new_question', @question.user_id)
 
     if @question.save
       redirect_to render_view_by_department
@@ -45,7 +47,7 @@ class QuestionsController < ApplicationController
   private
 
   def questions_params
-    params.require(:question).permit(:user_id, :title, :body, :department)
+    params.require(:question).permit(:user_id, :title, :body, :department, tags_attributes: [ :question_id, :id, :name ])
   end
 
   def set_question

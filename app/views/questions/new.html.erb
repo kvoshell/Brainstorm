@@ -1,10 +1,8 @@
 <div class='new-question-content'>
-  <h1 class='new-question-title'>Ask A Question</h1>
-
-  <hr class='gradiant-hr'>
   <div class='guidelines'>
+    <h2 class='guideline-title'>Welcome!</h2>
+    <hr class='gradiant-hr'>
     <div class='guideline'>
-      <h3 class='guideline-title'>Welcome!</h3>
         <p class='guideline-body'>
           Brainstorm is a collaborative space that encourages curiosity, values feedback,
           and provides insight into our collective expertise in an organized and engaging way.
@@ -36,9 +34,11 @@
         </p>
     </div>
   </div>
-  
-  <div class='new-question-form'>
-    <%= form_for [Question.new], method: :post do |question| %>
+
+  <div class='content-form'>
+    <h2 class='form-title'>Ask A Question</h2>
+    <hr class='gradiant-hr'>
+    <%= form_for [@question], method: :post do |question| %>
       <%= question.hidden_field :user_id, value: current_user.id %>
 
       <div class='form-group'>
@@ -46,7 +46,22 @@
       </div>
 
       <div class='form-group'>
-        <%= question.text_area :body, class: 'form-control new-question', rows: 6, placeholder: "Question Body", required: true %>
+        <%= question.text_area :body, class: 'form-control new-question', rows: 3, placeholder: "Question Body", required: true %>
+      </div>
+
+      <div class='form-group new-question-buttons', id='new-question-form'>
+        <%= question.fields_for :tags do |tag_fields| %>
+          <%= tag_fields.label :name, "Enter Tags: " %>
+          <%= tag_fields.text_field :name, class: 'form-control new-tag', placeholder: "Tag Name" %>
+        <% end %>
+
+        <%= question.fields_for :tags do |tag_fields| %>
+          <%= tag_fields.text_field :name, class: 'form-control new-tag', placeholder: "Tag Name" %>
+        <% end %>
+
+        <%= question.fields_for :tags do |tag_fields| %>
+          <%= tag_fields.text_field :name, class: 'form-control new-tag', placeholder: "Tag Name" %>
+        <% end %>
       </div>
 
       <div class='form-group new-question-buttons'>
@@ -57,8 +72,11 @@
         <%= question.radio_button :department, 'Design', class: 'new-question-button' %>
         <%= question.label :department, "Design", class: 'new-question-label' %>
 
-        <%= question.radio_button :department, 'Account Management', class: 'new-question-button' %>
-        <%= question.label :department, "Account Management", class: 'new-question-label' %>
+        <%= question.radio_button :department, 'Project Management', class: 'new-question-button' %>
+        <%= question.label :department, "Project Management", class: 'new-question-label' %>
+
+        <%= question.radio_button :department, 'Sales', class: 'new-question-button' %>
+        <%= question.label :department, "Sales", class: 'new-question-label' %>
 
         <%= question.radio_button :department, 'Other', class: 'new-question-button', checked: true %>
         <%= question.label :department, "Other", class: 'new-question-label' %>
@@ -70,3 +88,12 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  document.getElementById("new-question-form").onkeypress = function(e) {
+    var key = e.charCode || e.keyCode || 0;
+    if (key == 13) {
+      e.preventDefault();
+    }
+  }
+</script>

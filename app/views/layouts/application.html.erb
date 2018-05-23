@@ -13,30 +13,39 @@
     <div class='body-container'>
       <% if user_signed_in? %>
         <div class='sidebar'>
-          <div class='sidebar-title'>
-            <h1><%= link_to 'Brainstorm', root_path, class:'sidebar-logo' %></h1>
+          <div class='sidebar-upper'>
+
+            <div class='sidebar-title'>
+              <h1><%= link_to 'Brainstorm', root_path, class:'sidebar-logo' %></h1>
+            </div>
+            <div class='sidebar-account-info'>
+              <h3 class='sidebar-user'><%= current_user.user_name %> &nbsp; <span class='aura'><%= current_user.aura %></span></h3>
+            </div>
           </div>
 
-          <div class='sidebar-links'>
-            <%= link_to 'Ask A Question', new_question_path, class: 'sidebar-item' %>
+          <div class='sidebar-lower'>
+            <div class='sidebar-links'>
+              <%= link_to 'Ask A Question', new_question_path, class: 'sidebar-item' %>
 
-            <hr class='sidebar-hr'>
+              <hr class='sidebar-hr'>
 
-            <%= link_to 'Account Management', account_managements_path, class: 'sidebar-item' %>
-            <%= link_to 'Development', developments_path, class: 'sidebar-item' %>
-            <%= link_to 'Design', designs_path, class: 'sidebar-item' %>
-            <%= link_to 'Other', others_path, class: 'sidebar-item' %>
+              <%= link_to 'Development', developments_path, class: 'sidebar-item' %>
+              <%= link_to 'Project Management', project_managements_path, class: 'sidebar-item' %>
+              <%= link_to 'Sales', sales_path, class: 'sidebar-item' %>
+              <%= link_to 'Design', designs_path, class: 'sidebar-item' %>
+              <%= link_to 'Other', others_path, class: 'sidebar-item' %>
 
-            <hr class='sidebar-hr'>
+              <hr class='sidebar-hr'>
 
-            <%= link_to 'My Questions', questions_path(search: 'asked', user_id: current_user.id), class: 'sidebar-item' %>
-            <%= link_to 'My Answers', answers_path(search: 'answered'), class: 'sidebar-item' %>
-            <%= link_to 'Starred', starred_questions_path, class: 'sidebar-item' %>
+              <%= link_to 'My Questions', questions_path(search: 'asked', user_id: current_user.id), class: 'sidebar-item' %>
+              <%= link_to 'My Answers', answers_path(search: 'answered'), class: 'sidebar-item' %>
+              <%= link_to 'Saved Questions', saved_questions_path, class: 'sidebar-item' %>
 
-            <hr class='sidebar-hr'>
+              <hr class='sidebar-hr'>
 
-            <%= link_to 'Edit Account', edit_user_registration_path, class: 'sidebar-item' %>
-            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'sidebar-item' %>
+              <%= link_to 'Edit Account', edit_user_registration_path, class: 'sidebar-item' %>
+              <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'sidebar-item' %>
+            </div>
           </div>
         </div>
 
